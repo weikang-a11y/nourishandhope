@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Get Help — Nourish & Hope</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', Arial, sans-serif; background: #FAF7F2; color: #2D2D2A; line-height: 1.7; }
+  a { text-decoration: none; }
+  .nav { background: #fff; border-bottom: 1px solid #EDE8DF; padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 64px; position: sticky; top: 0; z-index: 99; }
+  .nav-logo { font-family: 'Lora', Georgia, serif; font-size: 20px; color: #5C7A5F; display: flex; align-items: center; gap: 8px; }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a { color: #5A5750; font-size: 14px; }
+  .nav-links a:hover { color: #5C7A5F; }
+  .nav-links a.active { background: #5C7A5F; color: #fff !important; padding: 8px 20px; border-radius: 40px; font-weight: 500; }
+  /* Crisis top */
+  .crisis-top { background: #E8836A; padding: 28px 40px; text-align: center; }
+  .crisis-top h2 { font-family: 'Lora', Georgia, serif; font-size: 22px; font-weight: 600; color: #fff; margin-bottom: 8px; }
+  .crisis-top p { font-size: 15px; color: rgba(255,255,255,0.9); margin-bottom: 20px; }
+  .crisis-cards { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; max-width: 700px; margin: 0 auto; }
+  .crisis-card { background: rgba(255,255,255,0.15); border: 1.5px solid rgba(255,255,255,0.3); border-radius: 14px; padding: 16px 24px; flex: 1; min-width: 180px; text-align: center; }
+  .crisis-card .label { font-size: 11px; font-weight: 500; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+  .crisis-card .number { font-family: 'Lora', Georgia, serif; font-size: 20px; font-weight: 600; color: #fff; margin-bottom: 4px; }
+  .crisis-card .detail { font-size: 12px; color: rgba(255,255,255,0.7); }
+  .crisis-card a { color: #fff; }
+  /* Hero */
+  .hero { background: #FAF7F2; padding: 60px 40px 48px; text-align: center; }
+  .section-label { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #8C897F; margin-bottom: 10px; }
+  .hero h1 { font-family: 'Lora', Georgia, serif; font-size: clamp(28px, 3.5vw, 44px); font-weight: 600; color: #2D2D2A; margin-bottom: 14px; line-height: 1.2; }
+  .hero h1 em { color: #5C7A5F; font-style: italic; }
+  .hero p { font-size: 16px; color: #5A5750; max-width: 540px; margin: 0 auto; line-height: 1.8; font-weight: 300; }
+  /* Sections */
+  .section { padding: 64px 40px; }
+  .section-inner { max-width: 900px; margin: 0 auto; }
+  .section-title { font-family: 'Lora', Georgia, serif; font-size: clamp(24px, 2.8vw, 34px); font-weight: 600; color: #2D2D2A; margin-bottom: 12px; line-height: 1.3; }
+  .section-sub { font-size: 15px; color: #5A5750; max-width: 580px; font-weight: 300; margin-bottom: 36px; line-height: 1.8; }
+  /* Helplines */
+  .helpline-grid { display: flex; flex-direction: column; gap: 16px; }
+  .helpline-card { background: #fff; border-radius: 16px; padding: 24px 28px; border: 1px solid #EDE8DF; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .helpline-icon { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; }
+  .helpline-info { flex: 1; min-width: 200px; }
+  .helpline-info h4 { font-size: 16px; font-weight: 500; color: #2D2D2A; margin-bottom: 4px; }
+  .helpline-info .number { font-family: 'Lora', Georgia, serif; font-size: 20px; font-weight: 600; color: #5C7A5F; margin-bottom: 4px; }
+  .helpline-info p { font-size: 13px; color: #5A5750; line-height: 1.5; }
+  .helpline-badge { font-size: 11px; font-weight: 500; padding: 4px 10px; border-radius: 20px; white-space: nowrap; }
+  .badge-free { background: #EBF2EC; color: #3B5E3D; }
+  .badge-text { background: #EAF3F9; color: #185FA5; }
+  .badge-24 { background: #FDF0EC; color: #993C1D; }
+  .helpline-action a { display: inline-block; padding: 10px 22px; border-radius: 40px; font-size: 13px; font-weight: 500; white-space: nowrap; }
+  /* Provider finder */
+  .finder { background: #fff; border-radius: 20px; padding: 36px; border: 1px solid #EDE8DF; margin-bottom: 28px; }
+  .finder h3 { font-family: 'Lora', Georgia, serif; font-size: 22px; font-weight: 600; color: #2D2D2A; margin-bottom: 8px; }
+  .finder p { font-size: 14px; color: #5A5750; margin-bottom: 24px; line-height: 1.7; }
+  .finder-form { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; }
+  .finder-form input, .finder-form select { flex: 1; min-width: 160px; border: 1.5px solid #EDE8DF; border-radius: 10px; padding: 11px 14px; font-size: 14px; font-family: 'DM Sans', Arial, sans-serif; color: #2D2D2A; outline: none; background: #FAF7F2; }
+  .finder-form input:focus, .finder-form select:focus { border-color: #5C7A5F; }
+  .finder-form button { background: #5C7A5F; color: #fff; border: none; padding: 11px 28px; border-radius: 10px; font-size: 14px; font-weight: 500; cursor: pointer; font-family: 'DM Sans', Arial, sans-serif; }
+  .finder-note { font-size: 12px; color: #8C897F; line-height: 1.5; }
+  .finder-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+  .finder-link { display: flex; align-items: center; gap: 8px; background: #FAF7F2; border: 1px solid #EDE8DF; border-radius: 10px; padding: 12px 16px; font-size: 13px; color: #5A5750; transition: border-color 0.2s; flex: 1; min-width: 200px; }
+  .finder-link:hover { border-color: #5C7A5F; color: #5C7A5F; }
+  .finder-link .icon { font-size: 20px; }
+  /* Levels of care */
+  .levels-grid { display: flex; flex-wrap: wrap; gap: 16px; }
+  .level-card { flex: 1; min-width: 200px; background: #fff; border-radius: 16px; padding: 24px; border: 1px solid #EDE8DF; border-top: 4px solid; }
+  .level-card.l1 { border-top-color: #A8C4AA; }
+  .level-card.l2 { border-top-color: #6A9BB8; }
+  .level-card.l3 { border-top-color: #E8836A; }
+  .level-card.l4 { border-top-color: #9B6AB0; }
+  .level-card h4 { font-size: 15px; font-weight: 500; color: #2D2D2A; margin-bottom: 6px; }
+  .level-card .freq { font-size: 12px; color: #8C897F; margin-bottom: 10px; }
+  .level-card p { font-size: 13px; color: #5A5750; line-height: 1.6; }
+  /* Insurance */
+  .insurance-box { background: #EBF2EC; border-radius: 16px; padding: 28px 32px; border: 1px solid #A8C4AA; }
+  .insurance-box h4 { font-family: 'Lora', Georgia, serif; font-size: 20px; font-weight: 600; color: #2D2D2A; margin-bottom: 12px; }
+  .insurance-box p { font-size: 14px; color: #5A5750; line-height: 1.7; margin-bottom: 12px; }
+  .insurance-steps { display: flex; flex-direction: column; gap: 10px; margin-top: 16px; }
+  .insurance-step { display: flex; gap: 12px; align-items: flex-start; font-size: 14px; color: #5A5750; }
+  .insurance-step .num { width: 24px; height: 24px; background: #5C7A5F; border-radius: 50%; color: #fff; font-size: 12px; font-weight: 500; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+  /* What to expect */
+  .expect-grid { display: flex; flex-wrap: wrap; gap: 20px; }
+  .expect-card { flex: 1; min-width: 220px; background: #fff; border-radius: 16px; padding: 24px; border: 1px solid #EDE8DF; }
+  .expect-card .step { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #8C897F; margin-bottom: 8px; }
+  .expect-card h4 { font-size: 15px; font-weight: 500; color: #2D2D2A; margin-bottom: 8px; }
+  .expect-card p { font-size: 13px; color: #5A5750; line-height: 1.6; }
+  /* Final CTA */
+  .final-cta { background: #5C7A5F; padding: 72px 40px; text-align: center; }
+  .final-cta h2 { font-family: 'Lora', Georgia, serif; font-size: clamp(24px, 3vw, 36px); font-weight: 600; color: #fff; margin-bottom: 14px; }
+  .final-cta p { font-size: 16px; color: rgba(255,255,255,0.85); max-width: 520px; margin: 0 auto 36px; line-height: 1.8; font-weight: 300; }
+  .cta-buttons { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+  /* Footer */
+  .footer { background: #2D2D2A; padding: 48px 40px 32px; }
+  .footer-top { display: flex; flex-wrap: wrap; gap: 40px; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 24px; }
+  .footer-brand { font-family: 'Lora', Georgia, serif; font-size: 20px; color: #fff; margin-bottom: 10px; display: block; }
+  .footer-desc { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; max-width: 220px; }
+  .footer-col h5 { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 14px; }
+  .footer-col-links { display: flex; flex-direction: column; gap: 10px; }
+  .footer-col-links a { font-size: 13px; color: rgba(255,255,255,0.55); }
+  .footer-disclaimer { font-size: 11px; color: rgba(255,255,255,0.3); line-height: 1.6; }
+  @media (max-width: 700px) {
+    .nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .section, .crisis-top, .final-cta { padding: 48px 20px; }
+    .hero { padding: 40px 20px; }
+    .helpline-card { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- CRISIS TOP BANNER -->
+<div class="crisis-top">
+  <h2>Need help right now?</h2>
+  <p>These resources are available today. You don't need to have all the answers — just reach out.</p>
+  <div class="crisis-cards">
+    <div class="crisis-card">
+      <div class="label">Eating Disorder Helpline</div>
+      <div class="number"><a href="tel:18666621235">1-866-662-1235</a></div>
+      <div class="detail">Mon–Fri, 9am–9pm ET · Free · Confidential</div>
+    </div>
+    <div class="crisis-card">
+      <div class="label">Crisis Text Line</div>
+      <div class="number">Text HOME to 741741</div>
+      <div class="detail">24/7 · Free · Anonymous</div>
+    </div>
+    <div class="crisis-card">
+      <div class="label">Emergency</div>
+      <div class="number"><a href="tel:911">Call 911</a></div>
+      <div class="detail">If someone is in immediate danger</div>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="index.html" class="nav-logo">🌿 Nourish &amp; Hope</a>
+  <ul class="nav-links">
+    <li><a href="kids.html">For Kids &amp; Teens</a></li>
+    <li><a href="parents.html">For Parents</a></li>
+    <li><a href="understand.html">Understanding EDs</a></li>
+    <li><a href="gethelp.html" class="active">Get Help</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="section-label">Finding the right support</div>
+  <h1>Taking the <em>next step</em></h1>
+  <p>Finding help for an eating disorder can feel overwhelming. This page gives you everything you need in one place — helplines, how to find a provider, what to expect from treatment, and how to navigate insurance.</p>
+</div>
+
+<!-- HELPLINES -->
+<div class="section" style="background:#fff;" id="helplines">
+  <div class="section-inner">
+    <div class="section-label">Talk to someone today</div>
+    <h2 class="section-title">Helplines &amp; crisis support</h2>
+    <p class="section-sub">All of these resources are free and confidential. You don't need to be in crisis to call — uncertainty and worry are enough.</p>
+
+    <div class="helpline-grid">
+
+      <div class="helpline-card">
+        <div class="helpline-icon" style="background:#EBF2EC;">🌿</div>
+        <div class="helpline-info">
+          <h4>National Alliance for Eating Disorders Helpline</h4>
+          <div class="number">1-866-662-1235</div>
+          <p>Staffed by trained clinicians specialising in eating disorders. For individuals and families. Can help you find local treatment options.</p>
+          <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap;">
+            <span class="helpline-badge badge-free">Free</span>
+            <span class="helpline-badge badge-text">Mon–Fri 9am–9pm ET</span>
+          </div>
+        </div>
+        <div class="helpline-action"><a href="tel:18666621235" style="background:#5C7A5F;color:#fff;">Call now</a></div>
+      </div>
+
+      <div class="helpline-card">
+        <div class="helpline-icon" style="background:#EAF3F9;">💬</div>
+        <div class="helpline-info">
+          <h4>Crisis Text Line</h4>
+          <div class="number">Text HOME to 741741</div>
+          <p>Text-based crisis support for anyone in emotional distress. Trained crisis counselors available around the clock. Great if calling feels too hard.</p>
+          <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap;">
+            <span class="helpline-badge badge-free">Free</span>
+            <span class="helpline-badge badge-24">24/7</span>
+            <span class="helpline-badge badge-text">Anonymous</span>
+          </div>
+        </div>
+        <div class="helpline-action"><a href="sms:741741" style="background:#6A9BB8;color:#fff;">Text now</a></div>
+      </div>
+
+      <div class="helpline-card">
+        <div class="helpline-icon" style="background:#FDF0EC;">🧠</div>
+        <div class="helpline-info">
+          <h4>988 Suicide &amp; Crisis Lifeline</h4>
+          <div class="number">Call or text 988</div>
+          <p>For anyone experiencing a mental health crisis, including eating disorder-related distress. Available in English and Spanish. Chat option also available at 988lifeline.org.</p>
+          <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap;">
+            <span class="helpline-badge badge-free">Free</span>
+            <span class="helpline-badge badge-24">24/7</span>
+          </div>
+        </div>
+        <div class="helpline-action"><a href="tel:988" style="background:#E8836A;color:#fff;">Call 988</a></div>
+      </div>
+
+      <div class="helpline-card">
+        <div class="helpline-icon" style="background:#FAF0F8;">💜</div>
+        <div class="helpline-info">
+          <h4>7 Cups — Online Peer Support</h4>
+          <div class="number">7cups.com</div>
+          <p>Free online chat with trained listeners. Not a crisis line, but a supportive space to talk through what you're feeling at any time of day or night. Good for teens who prefer text.</p>
+          <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap;">
+            <span class="helpline-badge badge-free">Free</span>
+            <span class="helpline-badge badge-24">24/7</span>
+            <span class="helpline-badge badge-text">Teens welcome</span>
+          </div>
+        </div>
+        <div class="helpline-action"><a href="https://www.7cups.com" target="_blank" style="background:#9B6AB0;color:#fff;">Visit site</a></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- FIND A PROVIDER -->
+<div class="section" id="find-provider">
+  <div class="section-inner">
+    <div class="section-label">Professional treatment</div>
+    <h2 class="section-title">Find a provider near you</h2>
+    <p class="section-sub">Use these trusted directories to find eating disorder specialists — therapists, dietitians, and treatment centers — in your area.</p>
+
+    <div class="finder">
+      <h3>🔍 Search provider directories</h3>
+      <p>These are the most trusted, up-to-date directories of eating disorder specialists in the US. Click any to search by location, insurance, and specialty.</p>
+      <div class="finder-links">
+        <a href="https://www.allianceforeatingdisorders.com/find-a-therapist/" target="_blank" class="finder-link">
+          <span class="icon">🌿</span>
+          <div>
+            <div style="font-weight:500;color:#2D2D2A;font-size:13px;">Alliance for Eating Disorders</div>
+            <div style="font-size:12px;color:#8C897F;">Find ED-specialised therapists nationwide</div>
+          </div>
+        </a>
+        <a href="https://www.psychologytoday.com/us/therapists/eating-disorders" target="_blank" class="finder-link">
+          <span class="icon">🧠</span>
+          <div>
+            <div style="font-weight:500;color:#2D2D2A;font-size:13px;">Psychology Today</div>
+            <div style="font-size:12px;color:#8C897F;">Filter by ED specialty, insurance, and location</div>
+          </div>
+        </a>
+        <a href="https://www.eatright.org/find-a-nutrition-expert" target="_blank" class="finder-link">
+          <span class="icon">🥗</span>
+          <div>
+            <div style="font-weight:500;color:#2D2D2A;font-size:13px;">Academy of Nutrition &amp; Dietetics</div>
+            <div style="font-size:12px;color:#8C897F;">Find registered dietitians specialising in EDs</div>
+          </div>
+        </a>
+        <a href="https://www.eatingdisorderhope.com/treatment-for-eating-disorders/centers" target="_blank" class="finder-link">
+          <span class="icon">🏥</span>
+          <div>
+            <div style="font-weight:500;color:#2D2D2A;font-size:13px;">Eating Disorder Hope</div>
+            <div style="font-size:12px;color:#8C897F;">Treatment centers and residential programs</div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div style="background:#FAF7F2;border-radius:16px;padding:24px 28px;border:1px solid #EDE8DF;">
+      <p style="font-size:14px;color:#5A5750;line-height:1.7;margin:0;"><strong style="color:#2D2D2A;">💡 Tip when searching:</strong> Look specifically for providers who list "eating disorders" as a specialty — not just general mental health. Ask potential providers directly: "Do you use evidence-based treatments for eating disorders, such as CBT-E or Family-Based Treatment (FBT)?" This helps you find someone with real expertise.</p>
+    </div>
+  </div>
+</div>
+
+<!-- LEVELS OF CARE -->
+<div class="section" style="background:#fff;" id="levels">
+  <div class="section-inner">
+    <div class="section-label">Understanding treatment</div>
+    <h2 class="section-title">Levels of care explained</h2>
+    <p class="section-sub">Eating disorder treatment isn't one-size-fits-all. There are different levels depending on how much support is needed — your treatment team will recommend the right one.</p>
+
+    <div class="levels-grid">
+      <div class="level-card l1">
+        <h4>Outpatient (OP)</h4>
+        <div class="freq">1–3 sessions per week</div>
+        <p>Weekly appointments with a therapist and/or dietitian. Best for early-stage EDs or as a step-down from more intensive care. You continue living at home and going to school.</p>
+      </div>
+      <div class="level-card l2">
+        <h4>Intensive Outpatient (IOP)</h4>
+        <div class="freq">3–5 days per week, 3 hrs/day</div>
+        <p>More structured support including group therapy, meals with support, and individual sessions. You still live at home but have more daily support.</p>
+      </div>
+      <div class="level-card l3">
+        <h4>Partial Hospitalisation (PHP)</h4>
+        <div class="freq">5 days per week, 6–8 hrs/day</div>
+        <p>A full-day program with meals, groups, and therapy — but you go home each evening. Provides intensive structure without inpatient admission.</p>
+      </div>
+      <div class="level-card l4">
+        <h4>Residential / Inpatient</h4>
+        <div class="freq">24/7 care</div>
+        <p>Around-the-clock medical and psychological care in a treatment facility. For cases where safety requires constant monitoring. Typically a short-term bridge to lower levels of care.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- INSURANCE -->
+<div class="section" id="insurance">
+  <div class="section-inner">
+    <div class="section-label">Practical guidance</div>
+    <h2 class="section-title">Navigating insurance</h2>
+    <p class="section-sub">The cost of eating disorder treatment can feel daunting. Here's how to advocate for coverage.</p>
+
+    <div class="insurance-box">
+      <h4>🛡️ Know your rights</h4>
+      <p>Under the Mental Health Parity and Addiction Equity Act, insurance plans must cover mental health and eating disorder treatment at the same level as physical health conditions. This means if your plan covers physical therapy, it must cover eating disorder therapy too.</p>
+      <p>Here's how to advocate for the coverage you're entitled to:</p>
+      <div class="insurance-steps">
+        <div class="insurance-step"><div class="num">1</div><div>Call your insurance company and ask specifically: "What eating disorder treatment benefits do I have, and what is covered at each level of care?"</div></div>
+        <div class="insurance-step"><div class="num">2</div><div>Ask your treatment provider if they are "in-network" — and if not, ask about "single case agreements" where out-of-network providers can sometimes be covered.</div></div>
+        <div class="insurance-step"><div class="num">3</div><div>If a claim is denied, file an appeal. Many denials are overturned on appeal, especially when your treatment team provides a letter of medical necessity.</div></div>
+        <div class="insurance-step"><div class="num">4</div><div>Contact your state's insurance commissioner if you believe your rights are being violated. Many states have mental health parity enforcement offices.</div></div>
+        <div class="insurance-step"><div class="num">5</div><div>If you have no insurance, ask treatment centers about sliding scale fees, payment plans, or state-funded mental health programs in your area.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHAT TO EXPECT -->
+<div class="section" style="background:#fff;" id="expect">
+  <div class="section-inner">
+    <div class="section-label">First steps</div>
+    <h2 class="section-title">What to expect when you first reach out</h2>
+    <p class="section-sub">Not knowing what happens next can be one of the biggest barriers to seeking help. Here's exactly what the first steps look like.</p>
+
+    <div class="expect-grid">
+      <div class="expect-card">
+        <div class="step">Step 1</div>
+        <h4>First call or email</h4>
+        <p>You contact a helpline, provider, or your doctor. You'll be asked some basic questions about what's going on. You don't need to have all the answers — just share what you can.</p>
+      </div>
+      <div class="expect-card">
+        <div class="step">Step 2</div>
+        <h4>Initial assessment</h4>
+        <p>A clinician will do a more thorough assessment — asking about eating patterns, history, physical health, and emotional wellbeing. This is not a test. There are no wrong answers.</p>
+      </div>
+      <div class="expect-card">
+        <div class="step">Step 3</div>
+        <h4>Treatment recommendation</h4>
+        <p>Based on the assessment, a level of care will be recommended. You'll have the chance to ask questions and share your concerns before any decisions are made.</p>
+      </div>
+      <div class="expect-card">
+        <div class="step">Step 4</div>
+        <h4>Building your team</h4>
+        <p>You'll be connected with the right providers — usually a therapist, a dietitian, and a doctor working together. You don't have to manage multiple appointments alone — your team coordinates.</p>
+      </div>
+      <div class="expect-card">
+        <div class="step">Step 5</div>
+        <h4>Treatment begins</h4>
+        <p>Treatment starts at whatever pace makes sense. Your team will check in regularly and adjust the plan as you progress. Recovery is a collaboration — you have a voice in your own care.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FINAL CTA -->
+<div class="final-cta">
+  <h2>You've already taken the hardest step.</h2>
+  <p>Being here, reading this, looking for help — that takes courage. Whatever comes next, you don't have to figure it out alone. Reach out today.</p>
+  <div class="cta-buttons">
+    <a href="tel:18666621235" style="background:#E8836A;color:#fff;padding:14px 32px;border-radius:40px;font-weight:500;font-size:15px;display:inline-block;">📞 Call 1-866-662-1235</a>
+    <a href="parents.html#community" style="background:rgba(255,255,255,0.15);color:#fff;padding:14px 32px;border-radius:40px;border:2px solid rgba(255,255,255,0.4);font-weight:500;font-size:15px;display:inline-block;">Join parent community</a>
+    <a href="kids.html#ask" style="background:#fff;color:#5C7A5F;padding:14px 32px;border-radius:40px;font-weight:500;font-size:15px;display:inline-block;">Ask anonymously</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-top">
+    <div style="flex:2;min-width:200px;">
+      <span class="footer-brand">🌿 Nourish &amp; Hope</span>
+      <p class="footer-desc">A compassionate resource for families navigating eating disorders in children and teens.</p>
+    </div>
+    <div class="footer-col" style="flex:1;min-width:130px;">
+      <h5>For Families</h5>
+      <div class="footer-col-links">
+        <a href="kids.html">For Kids &amp; Teens</a>
+        <a href="parents.html">For Parents</a>
+        <a href="kids.html#stories">Recovery Stories</a>
+        <a href="parents.html#community">Parent Forum</a>
+      </div>
+    </div>
+    <div class="footer-col" style="flex:1;min-width:130px;">
+      <h5>Resources</h5>
+      <div class="footer-col-links">
+        <a href="understand.html">Understanding EDs</a>
+        <a href="parents.html#warning-signs">Warning Signs</a>
+        <a href="gethelp.html">Find a Provider</a>
+        <a href="gethelp.html#helplines">Crisis Support</a>
+      </div>
+    </div>
+    <div class="footer-col" style="flex:1;min-width:130px;">
+      <h5>About</h5>
+      <div class="footer-col-links">
+        <a href="#">About Us</a>
+        <a href="#">Our Reviewers</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Contact Us</a>
+      </div>
+    </div>
+  </div>
+  <p class="footer-disclaimer">This website is for informational and community support purposes only. It is not a substitute for professional medical advice, diagnosis, or treatment. If you are experiencing a mental health emergency, please call 911 or go to your nearest emergency room. Eating disorder helpline: 1-866-662-1235 (National Alliance for Eating Disorders, Mon–Fri 9am–9pm ET). Crisis text line: Text HOME to 741741.</p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Understanding Eating Disorders — Nourish & Hope</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', Arial, sans-serif; background: #FAF7F2; color: #2D2D2A; line-height: 1.7; }
+  a { text-decoration: none; }
+  .nav { background: #fff; border-bottom: 1px solid #EDE8DF; padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 64px; position: sticky; top: 0; z-index: 99; }
+  .nav-logo { font-family: 'Lora', Georgia, serif; font-size: 20px; color: #5C7A5F; display: flex; align-items: center; gap: 8px; }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a { color: #5A5750; font-size: 14px; }
+  .nav-links a:hover { color: #5C7A5F; }
+  .nav-links a.active { color: #5C7A5F; font-weight: 500; }
+  .nav-cta { background: #5C7A5F; color: #fff !important; padding: 8px 20px; border-radius: 40px; font-weight: 500 !important; }
+  .crisis { background: #E8836A; color: #fff; text-align: center; padding: 10px 20px; font-size: 14px; }
+  .crisis a { color: #fff; font-weight: 700; text-decoration: underline; }
+  /* Hero */
+  .hero { background: #EBF2EC; padding: 72px 40px 64px; text-align: center; }
+  .hero-tag { display: inline-block; background: #A8C4AA; color: #1A4A1D; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 16px; border-radius: 40px; margin-bottom: 20px; }
+  .hero h1 { font-family: 'Lora', Georgia, serif; font-size: clamp(30px, 4vw, 50px); font-weight: 600; color: #2D2D2A; margin-bottom: 18px; line-height: 1.2; }
+  .hero h1 em { color: #5C7A5F; font-style: italic; }
+  .hero p { font-size: 17px; color: #5A5750; max-width: 580px; margin: 0 auto; line-height: 1.8; font-weight: 300; }
+  /* Jump links */
+  .jumplinks { background: #fff; border-bottom: 1px solid #EDE8DF; padding: 16px 40px; display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+  .jumplink { padding: 7px 18px; border-radius: 40px; font-size: 13px; font-weight: 500; color: #5A5750; border: 1.5px solid #EDE8DF; background: #fff; transition: all 0.2s; }
+  .jumplink:hover { background: #EBF2EC; color: #5C7A5F; border-color: #A8C4AA; }
+  /* Sections */
+  .section { padding: 72px 40px; }
+  .section-inner { max-width: 860px; margin: 0 auto; }
+  .section-label { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #8C897F; margin-bottom: 10px; }
+  .section-title { font-family: 'Lora', Georgia, serif; font-size: clamp(26px, 3vw, 36px); font-weight: 600; color: #2D2D2A; margin-bottom: 14px; line-height: 1.3; }
+  .section-sub { font-size: 16px; color: #5A5750; max-width: 600px; font-weight: 300; margin-bottom: 40px; line-height: 1.8; }
+  /* Myth vs fact */
+  .myth-grid { display: flex; flex-direction: column; gap: 16px; }
+  .myth-row { display: flex; gap: 16px; flex-wrap: wrap; }
+  .myth-box { flex: 1; min-width: 240px; border-radius: 16px; padding: 24px 28px; }
+  .myth-box.myth { background: #FDF0EC; border-left: 4px solid #E8836A; }
+  .myth-box.fact { background: #EBF2EC; border-left: 4px solid #5C7A5F; }
+  .myth-box .label { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; }
+  .myth-box.myth .label { color: #E8836A; }
+  .myth-box.fact .label { color: #5C7A5F; }
+  .myth-box p { font-size: 14px; color: #5A5750; line-height: 1.7; }
+  .myth-box.myth p { font-style: italic; }
+  /* ED types */
+  .ed-grid { display: flex; flex-wrap: wrap; gap: 20px; }
+  .ed-card { flex: 1; min-width: 240px; background: #fff; border-radius: 16px; padding: 28px; border: 1px solid #EDE8DF; }
+  .ed-card h4 { font-family: 'Lora', Georgia, serif; font-size: 18px; font-weight: 600; color: #2D2D2A; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+  .ed-card p { font-size: 14px; color: #5A5750; line-height: 1.7; margin-bottom: 12px; }
+  .ed-card .who { font-size: 12px; color: #8C897F; background: #FAF7F2; border-radius: 8px; padding: 8px 12px; }
+  /* Causes */
+  .causes-grid { display: flex; flex-wrap: wrap; gap: 20px; }
+  .cause-card { flex: 1; min-width: 200px; background: #fff; border-radius: 16px; padding: 24px; border: 1px solid #EDE8DF; text-align: center; }
+  .cause-icon { font-size: 30px; margin-bottom: 12px; }
+  .cause-card h4 { font-size: 15px; font-weight: 500; color: #2D2D2A; margin-bottom: 8px; }
+  .cause-card p { font-size: 13px; color: #5A5750; line-height: 1.6; }
+  /* Recovery */
+  .recovery-steps { display: flex; flex-direction: column; gap: 16px; }
+  .recovery-step { display: flex; gap: 20px; align-items: flex-start; background: #fff; border-radius: 16px; padding: 24px 28px; border: 1px solid #EDE8DF; }
+  .step-dot { width: 36px; height: 36px; background: #EBF2EC; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+  .step-text h4 { font-size: 15px; font-weight: 500; color: #2D2D2A; margin-bottom: 6px; }
+  .step-text p { font-size: 14px; color: #5A5750; line-height: 1.7; }
+  /* Stats */
+  .stats-bar { background: #5C7A5F; padding: 56px 40px; }
+  .stats-inner { max-width: 860px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 40px; justify-content: center; text-align: center; }
+  .stat { flex: 1; min-width: 160px; }
+  .stat-num { font-family: 'Lora', Georgia, serif; font-size: 44px; font-weight: 600; color: #fff; margin-bottom: 8px; }
+  .stat-desc { font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.5; }
+  /* Reviewed */
+  .reviewed { background: #fff; border-top: 1px solid #EDE8DF; padding: 32px 40px; text-align: center; }
+  .reviewed p { font-size: 13px; color: #8C897F; }
+  .reviewed strong { color: #5A5750; }
+  /* Footer */
+  .footer { background: #2D2D2A; padding: 48px 40px 32px; }
+  .footer-top { display: flex; flex-wrap: wrap; gap: 40px; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 24px; }
+  .footer-brand { font-family: 'Lora', Georgia, serif; font-size: 20px; color: #fff; margin-bottom: 10px; display: block; }
+  .footer-desc { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; max-width: 220px; }
+  .footer-col h5 { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 14px; }
+  .footer-col-links { display: flex; flex-direction: column; gap: 10px; }
+  .footer-col-links a { font-size: 13px; color: rgba(255,255,255,0.55); }
+  .footer-disclaimer { font-size: 11px; color: rgba(255,255,255,0.3); line-height: 1.6; }
+  @media (max-width: 700px) {
+    .nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .section, .stats-bar, .jumplinks { padding: 48px 20px; }
+    .hero { padding: 48px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="crisis">
+  Need immediate support? Call the Eating Disorder Helpline: <a href="tel:18666621235">1-866-662-1235</a> &nbsp;·&nbsp; Mon–Fri, 9am–9pm ET
+</div>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo">🌿 Nourish &amp; Hope</a>
+  <ul class="nav-links">
+    <li><a href="kids.html">For Kids &amp; Teens</a></li>
+    <li><a href="parents.html">For Parents</a></li>
+    <li><a href="understand.html" class="active">Understanding EDs</a></li>
+    <li><a href="gethelp.html" class="nav-cta">Get Help</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <span class="hero-tag">Education &amp; facts</span>
+  <h1>Understanding <em>eating disorders</em></h1>
+  <p>Clear, honest, clinically-reviewed information about eating disorders — what they are, who they affect, what causes them, and what recovery actually looks like.</p>
+</div>
+
+<!-- JUMP LINKS -->
+<div class="jumplinks">
+  <a href="#myths" class="jumplink">Myths vs facts</a>
+  <a href="#types" class="jumplink">Types of EDs</a>
+  <a href="#causes" class="jumplink">Causes</a>
+  <a href="#recovery" class="jumplink">Recovery</a>
+  <a href="#statistics" class="jumplink">Statistics</a>
+</div>
+
+<!-- MYTHS VS FACTS -->
+<div class="section" style="background:#fff;" id="myths">
+  <div class="section-inner">
+    <div class="section-label">Clearing up misconceptions</div>
+    <h2 class="section-title">Myths vs facts</h2>
+    <p class="section-sub">Eating disorders are widely misunderstood — even by doctors, teachers, and family members. Here's the truth.</p>
+
+    <div class="myth-grid">
+      <div class="myth-row">
+        <div class="myth-box myth"><div class="label">✗ Myth</div><p>"Eating disorders only affect thin, white teenage girls."</p></div>
+        <div class="myth-box fact"><div class="label">✓ Fact</div><p>Eating disorders affect people of all genders, ages, races, body sizes, and backgrounds. Someone can be in a larger body and still have a serious eating disorder.</p></div>
+      </div>
+      <div class="myth-row">
+        <div class="myth-box myth"><div class="label">✗ Myth</div><p>"It's just a phase. They'll grow out of it."</p></div>
+        <div class="myth-box fact"><div class="label">✓ Fact</div><p>Eating disorders are serious mental health conditions with significant physical health consequences. They rarely resolve on their own and almost always require professional support.</p></div>
+      </div>
+      <div class="myth-row">
+        <div class="myth-box myth"><div class="label">✗ Myth</div><p>"Parents cause eating disorders by being too controlling or too lenient."</p></div>
+        <div class="myth-box fact"><div class="label">✓ Fact</div><p>Eating disorders have complex, multi-factor causes. Parents do not cause them. In fact, family involvement is one of the most powerful factors in a child's recovery.</p></div>
+      </div>
+      <div class="myth-row">
+        <div class="myth-box myth"><div class="label">✗ Myth</div><p>"If they're eating, they can't have an eating disorder."</p></div>
+        <div class="myth-box fact"><div class="label">✓ Fact</div><p>Many eating disorders — like bulimia, binge eating disorder, and ARFID — involve eating. The disorder is in the relationship with food, not just the amount consumed.</p></div>
+      </div>
+      <div class="myth-row">
+        <div class="myth-box myth"><div class="label">✗ Myth</div><p>"They could just eat normally if they really wanted to."</p></div>
+        <div class="myth-box fact"><div class="label">✓ Fact</div><p>Eating disorders involve real changes in brain chemistry and thought patterns. Willpower alone cannot fix them, any more than willpower can fix diabetes or a broken arm.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TYPES -->
+<div class="section" id="types">
+  <div class="section-inner">
+    <div class="section-label">Know the difference</div>
+    <h2 class="section-title">Types of eating disorders</h2>
+    <p class="section-sub">Each eating disorder has its own patterns, experiences, and treatment needs. Here's an overview of the most common types.</p>
+
+    <div class="ed-grid">
+      <div class="ed-card">
+        <h4>🌿 Anorexia nervosa</h4>
+        <p>Characterized by severe restriction of food intake, intense fear of weight gain, and a distorted body image. Can involve compensatory behaviours like excessive exercise.</p>
+        <p>Has two subtypes: restrictive (limiting food only) and binge-purge (restriction plus episodes of bingeing and purging).</p>
+        <div class="who">Most commonly emerges in adolescence, but can affect any age.</div>
+      </div>
+      <div class="ed-card">
+        <h4>🌊 Bulimia nervosa</h4>
+        <p>Involves cycles of binge eating followed by compensatory behaviours like vomiting, laxative use, or excessive exercise. Often driven by shame and a desire to "undo" eating.</p>
+        <p>Many people with bulimia maintain an average body weight, making it less visible than anorexia.</p>
+        <div class="who">Often begins in late adolescence or early adulthood.</div>
+      </div>
+      <div class="ed-card">
+        <h4>🌀 Binge eating disorder</h4>
+        <p>Recurrent episodes of eating large amounts in a short period, with a feeling of loss of control, followed by distress, guilt, or shame — but without purging behaviours.</p>
+        <p>The most common eating disorder in the US. Often goes unrecognised and untreated.</p>
+        <div class="who">Affects people across all age groups and genders equally.</div>
+      </div>
+      <div class="ed-card">
+        <h4>🎯 ARFID</h4>
+        <p>Avoidant/Restrictive Food Intake Disorder involves avoiding foods based on sensory characteristics (texture, smell, appearance) or fear of choking/vomiting — not related to body image.</p>
+        <p>Can lead to nutritional deficiencies and significant impairment in daily life.</p>
+        <div class="who">More common in children, but can persist into adulthood.</div>
+      </div>
+      <div class="ed-card">
+        <h4>✨ OSFED</h4>
+        <p>Other Specified Feeding or Eating Disorder is the most common eating disorder diagnosis. It covers presentations that cause significant distress but don't fully meet criteria for the above categories.</p>
+        <p>OSFED is just as serious as other diagnoses and deserves the same level of care.</p>
+        <div class="who">Affects people of all ages, genders, and backgrounds.</div>
+      </div>
+      <div class="ed-card">
+        <h4>🔍 Orthorexia</h4>
+        <p>An obsession with eating "purely" or "healthily" that becomes so extreme it interferes with daily life, relationships, and physical health. Not yet an official diagnosis but widely recognised clinically.</p>
+        <p>Can masquerade as health-consciousness, making it difficult to identify.</p>
+        <div class="who">Increasingly common in wellness-focused cultures and social media users.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CAUSES -->
+<div class="section" style="background:#fff;" id="causes">
+  <div class="section-inner">
+    <div class="section-label">What we know</div>
+    <h2 class="section-title">What causes eating disorders?</h2>
+    <p class="section-sub">Eating disorders don't have a single cause. They develop from a complex mix of biological, psychological, and social factors — and no single person or thing is to blame.</p>
+
+    <div class="causes-grid">
+      <div class="cause-card">
+        <div class="cause-icon">🧬</div>
+        <h4>Genetics</h4>
+        <p>Research shows eating disorders run in families and have a significant genetic component. Having a relative with an ED increases risk.</p>
+      </div>
+      <div class="cause-card">
+        <div class="cause-icon">🧠</div>
+        <h4>Brain chemistry</h4>
+        <p>Differences in serotonin, dopamine, and other neurotransmitters play a role in how people experience hunger, reward, and mood around food.</p>
+      </div>
+      <div class="cause-card">
+        <div class="cause-icon">💭</div>
+        <h4>Psychological factors</h4>
+        <p>Perfectionism, low self-esteem, anxiety, trauma, and difficulty managing emotions are strongly associated with eating disorder development.</p>
+      </div>
+      <div class="cause-card">
+        <div class="cause-icon">📱</div>
+        <h4>Social &amp; cultural pressure</h4>
+        <p>Diet culture, social media, and societal ideals about body size can trigger and maintain disordered eating — especially in adolescence.</p>
+      </div>
+      <div class="cause-card">
+        <div class="cause-icon">🏡</div>
+        <h4>Life experiences</h4>
+        <p>Trauma, bullying, difficult life transitions, or comments about weight and food — especially during childhood — can be contributing factors.</p>
+      </div>
+      <div class="cause-card">
+        <div class="cause-icon">⚖️</div>
+        <h4>Dieting</h4>
+        <p>Restrictive dieting — especially in young people — is one of the strongest risk factors for developing an eating disorder. The body's response to restriction can trigger ED behaviours.</p>
+      </div>
+    </div>
+
+    <div style="background:#EBF2EC;border-radius:16px;padding:24px 28px;margin-top:28px;">
+      <p style="font-size:14px;color:#5A5750;line-height:1.7;margin:0;"><strong style="color:#2D2D2A;">Important:</strong> Understanding causes helps with compassion — not blame. Whether you're a parent, a young person, or someone supporting a loved one, knowing the causes helps you respond with care rather than judgment.</p>
+    </div>
+  </div>
+</div>
+
+<!-- RECOVERY -->
+<div class="section" id="recovery">
+  <div class="section-inner">
+    <div class="section-label">There is a way forward</div>
+    <h2 class="section-title">What does recovery look like?</h2>
+    <p class="section-sub">Recovery is not a straight line — but it is real, and it happens for thousands of people every year. Here's what the journey typically involves.</p>
+
+    <div class="recovery-steps">
+      <div class="recovery-step">
+        <div class="step-dot">🌱</div>
+        <div class="step-text">
+          <h4>Recognition — something is wrong</h4>
+          <p>Recovery usually begins with someone recognising that the relationship with food is causing harm — whether that's the young person themselves, a parent, a friend, or a doctor. This step alone takes enormous courage.</p>
+        </div>
+      </div>
+      <div class="recovery-step">
+        <div class="step-dot">🤝</div>
+        <div class="step-text">
+          <h4>Assessment — understanding what's happening</h4>
+          <p>A doctor or specialist assesses the physical and psychological situation. This determines what level of care is needed — from weekly outpatient therapy to more intensive support.</p>
+        </div>
+      </div>
+      <div class="recovery-step">
+        <div class="step-dot">🧠</div>
+        <div class="step-text">
+          <h4>Treatment — working with a team</h4>
+          <p>Effective eating disorder treatment usually involves a team: a therapist, a dietitian, and a doctor working together. Therapy approaches like CBT, FBT (Family-Based Treatment), and DBT are evidence-based and proven to work.</p>
+        </div>
+      </div>
+      <div class="recovery-step">
+        <div class="step-dot">📈</div>
+        <div class="step-text">
+          <h4>Progress — two steps forward, one step back</h4>
+          <p>Recovery rarely goes in a straight line. There will be hard days, setbacks, and moments of doubt. This is normal and expected — not a sign of failure. What matters is continuing to show up.</p>
+        </div>
+      </div>
+      <div class="recovery-step">
+        <div class="step-dot">🌟</div>
+        <div class="step-text">
+          <h4>Freedom — a life beyond the eating disorder</h4>
+          <p>Full recovery means being able to eat without constant fear or guilt, to feel at home in your body, and to not have food consume your mental energy. This is achievable — and it's what recovery looks like for many people.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STATISTICS -->
+<div class="stats-bar" id="statistics">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-num">9%</div>
+      <div class="stat-desc">of the global population will experience an eating disorder in their lifetime</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">10,200</div>
+      <div class="stat-desc">deaths per year in the US are directly linked to eating disorders</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">80%</div>
+      <div class="stat-desc">of people with anorexia who receive treatment show significant improvement</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">6 yrs</div>
+      <div class="stat-desc">average delay between onset of symptoms and receiving treatment</div>
+    </div>
+  </div>
+</div>
+
+<!-- REVIEWED -->
+<div class="reviewed">
+  <p>🩺 <strong>All content on this page has been reviewed by licensed mental health professionals and registered dietitians</strong> specialising in eating disorders. Last reviewed March 2026.</p>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-top">
+    <div style="flex:2;min-width:200px;">
+      <span class="footer-brand">🌿 Nourish &amp; Hope</span>
+      <p class="footer-desc">A compassionate resource for families navigating eating disorders in children and teens.</p>
+    </div>
+    <div class="footer-col" style="flex:1;min-width:130px;">
+      <h5>For Families</h5>
+      <div class="footer-col-links">
+        <a href="kids.html">For Kids &amp; Teens</a>
+        <a href="parents.html">For Parents</a>
+        <a href="kids.html#stories">Recovery Stories</a>
+        <a href="parents.html#community">Parent Forum</a>
+      </div>
+    </div>
+    <div class="footer-col" style="flex:1;min-width:130px;">
+      <h5>Resources</h5>
+      <div class="footer-col-links">
+        <a href="understand.html">Understanding EDs</a>
+        <a href="parents.html#warning-signs">Warning Signs</a>
+        <a href="gethelp.html">Find a Provider</a>
+        <a href="gethelp.html">Crisis Support</a>
+      </div>
+    </div>
+    <div class="footer-col" style="flex:1;min-width:130px;">
+      <h5>About</h5>
+      <div class="footer-col-links">
+        <a href="#">About Us</a>
+        <a href="#">Our Reviewers</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Contact Us</a>
+      </div>
+    </div>
+  </div>
+  <p class="footer-disclaimer">This website is for informational and community support purposes only. It is not a substitute for professional medical advice, diagnosis, or treatment. If you are experiencing a mental health emergency, please call 911 or go to your nearest emergency room. Eating disorder helpline: 1-866-662-1235 (National Alliance for Eating Disorders, Mon–Fri 9am–9pm ET).</p>
+</div>
+
+</body>
+</html>
