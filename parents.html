@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>For Parents — Nourish & Hope</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', Arial, sans-serif; background: #FAF7F2; color: #2D2D2A; line-height: 1.7; }
+  a { text-decoration: none; }
+  /* Nav */
+  .nav { background: #fff; border-bottom: 1px solid #EDE8DF; padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 64px; position: sticky; top: 0; z-index: 99; }
+  .nav-logo { font-family: 'Lora', Georgia, serif; font-size: 20px; color: #5C7A5F; display: flex; align-items: center; gap: 8px; }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a { color: #5A5750; font-size: 14px; transition: color 0.2s; }
+  .nav-links a:hover { color: #5C7A5F; }
+  .nav-links a.active { color: #5C7A5F; font-weight: 500; }
+  .nav-cta { background: #5C7A5F; color: #fff !important; padding: 8px 20px; border-radius: 40px; font-weight: 500 !important; }
+  /* Crisis */
+  .crisis { background: #E8836A; color: #fff; text-align: center; padding: 10px 20px; font-size: 14px; }
+  .crisis a { color: #fff; font-weight: 700; text-decoration: underline; }
+  /* Hero */
+  .hero { background: #EAF3F9; padding: 72px 40px 64px; text-align: center; }
+  .hero-tag { display: inline-block; background: #9EC4DA; color: #0C447C; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 16px; border-radius: 40px; margin-bottom: 20px; }
+  .hero h1 { font-family: 'Lora', Georgia, serif; font-size: clamp(32px, 4vw, 52px); font-weight: 600; color: #2D2D2A; margin-bottom: 20px; line-height: 1.2; }
+  .hero h1 em { color: #6A9BB8; font-style: italic; }
+  .hero p { font-size: 17px; color: #5A5750; max-width: 580px; margin: 0 auto 36px; line-height: 1.8; font-weight: 300; }
+  .hero-buttons { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+  .btn-primary { background: #6A9BB8; color: #fff; padding: 14px 32px; border-radius: 40px; font-weight: 500; font-size: 15px; transition: background 0.2s; display: inline-block; }
+  .btn-primary:hover { background: #5080A0; }
+  .btn-secondary { background: transparent; color: #6A9BB8; padding: 13px 30px; border-radius: 40px; border: 2px solid #9EC4DA; font-weight: 500; font-size: 15px; transition: background 0.2s; display: inline-block; }
+  .btn-secondary:hover { background: #EAF3F9; }
+  /* Sections */
+  .section { padding: 72px 40px; }
+  .section-inner { max-width: 960px; margin: 0 auto; }
+  .section-label { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #8C897F; margin-bottom: 10px; }
+  .section-title { font-family: 'Lora', Georgia, serif; font-size: clamp(26px, 3vw, 38px); font-weight: 600; color: #2D2D2A; margin-bottom: 14px; line-height: 1.3; }
+  .section-sub { font-size: 16px; color: #5A5750; max-width: 580px; font-weight: 300; margin-bottom: 48px; line-height: 1.8; }
+  /* Warning signs */
+  .warning-grid { display: flex; flex-wrap: wrap; gap: 20px; }
+  .warning-card { flex: 1; min-width: 260px; background: #fff; border-radius: 16px; padding: 28px; border: 1px solid #EDE8DF; border-left: 4px solid #E8836A; }
+  .warning-card h4 { font-size: 15px; font-weight: 500; color: #2D2D2A; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+  .warning-card ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .warning-card ul li { font-size: 13px; color: #5A5750; padding-left: 16px; position: relative; line-height: 1.5; }
+  .warning-card ul li::before { content: '·'; position: absolute; left: 4px; color: #E8836A; font-weight: 700; }
+  /* How to talk */
+  .talk-steps { display: flex; flex-direction: column; gap: 20px; }
+  .talk-step { display: flex; gap: 24px; align-items: flex-start; background: #fff; border-radius: 16px; padding: 28px; border: 1px solid #EDE8DF; }
+  .step-num { width: 44px; height: 44px; background: #EAF3F9; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Lora', Georgia, serif; font-size: 18px; font-weight: 600; color: #6A9BB8; flex-shrink: 0; }
+  .step-content h4 { font-size: 16px; font-weight: 500; color: #2D2D2A; margin-bottom: 8px; }
+  .step-content p { font-size: 14px; color: #5A5750; line-height: 1.7; }
+  .step-content .example { background: #EAF3F9; border-radius: 8px; padding: 12px 16px; margin-top: 12px; font-size: 13px; color: #185FA5; font-style: italic; line-height: 1.6; }
+  /* Community */
+  .community-box { background: #fff; border-radius: 24px; padding: 48px; border: 1px solid #EDE8DF; display: flex; flex-wrap: wrap; gap: 48px; align-items: center; }
+  .community-text { flex: 1; min-width: 260px; }
+  .community-text h3 { font-family: 'Lora', Georgia, serif; font-size: 28px; font-weight: 600; color: #2D2D2A; margin-bottom: 14px; }
+  .community-text p { font-size: 15px; color: #5A5750; line-height: 1.8; margin-bottom: 14px; font-weight: 300; }
+  .community-features { flex: 1; min-width: 260px; display: flex; flex-direction: column; gap: 16px; }
+  .community-feature { display: flex; align-items: flex-start; gap: 14px; }
+  .feature-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+  .feature-icon.blue { background: #EAF3F9; }
+  .feature-icon.green { background: #EBF2EC; }
+  .feature-icon.peach { background: #FDF0EC; }
+  .feature-text h5 { font-size: 14px; font-weight: 500; color: #2D2D2A; margin-bottom: 4px; }
+  .feature-text p { font-size: 13px; color: #5A5750; line-height: 1.6; }
+  /* Forum preview */
+  .forum-preview { background: #F5F8FA; border-radius: 16px; padding: 24px; border: 1px solid #D0E4F0; margin-top: 32px; }
+  .forum-header { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid #D0E4F0; }
+  .forum-title { font-size: 15px; font-weight: 500; color: #2D2D2A; }
+  .forum-badge { background: #6A9BB8; color: #fff; font-size: 11px; padding: 2px 8px; border-radius: 20px; }
+  .forum-post { display: flex; gap: 12px; margin-bottom: 16px; }
+  .forum-avatar { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 500; color: #fff; flex-shrink: 0; }
+  .forum-post-content { flex: 1; }
+  .forum-post-name { font-size: 13px; font-weight: 500; color: #2D2D2A; margin-bottom: 4px; }
+  .forum-post-text { font-size: 13px; color: #5A5750; line-height: 1.6; background: #fff; padding: 10px 14px; border-radius: 10px; border: 1px solid #EDE8DF; }
+  .forum-post-time { font-size: 11px; color: #8C897F; margin-top: 4px; }
+  /* Navigate care */
+  .care-grid { display: flex; flex-wrap: wrap; gap: 20px; }
+  .care-card { flex: 1; min-width: 200px; background: #fff; border-radius: 16px; padding: 28px; border: 1px solid #EDE8DF; text-align: center; }
+  .care-icon { font-size: 32px; margin-bottom: 14px; }
+  .care-card h4 { font-size: 15px; font-weight: 500; color: #2D2D2A; margin-bottom: 10px; }
+  .care-card p { font-size: 13px; color: #5A5750; line-height: 1.6; }
+  /* Self care */
+  .selfcare { background: #6A9BB8; padding: 72px 40px; text-align: center; }
+  .selfcare h2 { font-family: 'Lora', Georgia, serif; font-size: clamp(24px, 3vw, 36px); font-weight: 600; color: #fff; margin-bottom: 16px; }
+  .selfcare p { font-size: 16px; color: rgba(255,255,255,0.85); max-width: 580px; margin: 0 auto 36px; line-height: 1.8; font-weight: 300; }
+  .selfcare-cards { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; max-width: 860px; margin: 0 auto; }
+  .selfcare-card { flex: 1; min-width: 200px; background: rgba(255,255,255,0.12); border-radius: 16px; padding: 24px; border: 1px solid rgba(255,255,255,0.2); }
+  .selfcare-card h5 { font-size: 15px; font-weight: 500; color: #fff; margin-bottom: 8px; }
+  .selfcare-card p { font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.6; }
+  /* CTA */
+  .cta { background: #F5EFE6; padding: 72px 40px; }
+  .cta-inner { background: #fff; border-radius: 24px; padding: 48px; max-width: 860px; margin: 0 auto; border: 1px solid #EDE8DF; text-align: center; }
+  .cta-inner h2 { font-family: 'Lora', Georgia, serif; font-size: 30px; font-weight: 600; color: #2D2D2A; margin-bottom: 12px; }
+  .cta-inner p { font-size: 15px; color: #5A5750; max-width: 520px; margin: 0 auto 32px; line-height: 1.7; }
+  .cta-buttons { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+  /* Footer */
+  .footer { background: #2D2D2A; padding: 48px 40px 32px; }
+  .footer-top { display: flex; flex-wrap: wrap; gap: 40px; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 24px; }
+  .footer-brand { font-family: 'Lora', Georgia, serif; font-size: 20px; color: #fff; margin-bottom: 10px; display: block; }
+  .footer-desc { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; max-width: 220px; }
+  .footer-col h5 { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 14px; }
+  .footer-col-links { display: flex; flex-direction: column; gap: 10px; }
+  .footer-col-links a { font-size: 13px; color: rgba(255,255,255,0.55); }
+  .footer-disclaimer { font-size: 11px; color: rgba(255,255,255,0.3); line-height: 1.6; }
+  @media (max-width: 700px) {
+    .nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .section { padding: 48px 20px; }
+    .hero { padding: 48px 20px; }
+    .community-box { padding: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- CRISIS BANNER -->
+<div class="crisis">
+  If you or your child need immediate support, call the Eating Disorder Helpline:
+  <a href="tel:18666621235">1-866-662-1235</a>
+  &nbsp;·&nbsp; Mon–Fri, 9am–9pm ET
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="index.html" class="nav-logo">🌿 Nourish &amp; Hope</a>
+  <ul class="nav-links">
+    <li><a href="kids.html">For Kids &amp; Teens</a></li>
+    <li><a href="parents.html" class="active">For Parents</a></li>
+    <li><a href="understand.html">Understanding EDs</a></li>
+    <li><a href="gethelp.html" class="nav-cta">Get Help</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <span class="hero-tag">For parents &amp; caregivers</span>
+  <h1>You are not <em>failing</em> your child.</h1>
+  <p>Watching your child struggle with an eating disorder is one of the most frightening and isolating experiences a parent can face. You are not alone — and your involvement is one of the most powerful forces in their recovery.</p>
+  <div class="hero-buttons">
+    <a href="#community" class="btn-primary">Join parent community</a>
+    <a href="#warning-signs" class="btn-secondary">See warning signs</a>
+  </div>
+</div>
+
+<!-- WARNING SIGNS -->
+<div class="section" style="background:#fff;" id="warning-signs">
+  <div class="section-inner">
+    <div class="section-label">Early recognition</div>
+    <h2 class="section-title">Warning signs to watch for</h2>
+    <p class="section-sub">Eating disorders often develop quietly. Knowing what to look for helps you act early — and early action leads to dramatically better outcomes.</p>
+
+    <div class="warning-grid">
+
+      <div class="warning-card">
+        <h4>🍽️ Around food &amp; eating</h4>
+        <ul>
+          <li>Skipping meals or making excuses not to eat</li>
+          <li>Obsessing over calories, ingredients, or "clean" eating</li>
+          <li>Eating very small portions or refusing whole food groups</li>
+          <li>Disappearing to the bathroom after meals</li>
+          <li>Hoarding or hiding food</li>
+          <li>Eating large amounts secretly or very rapidly</li>
+        </ul>
+      </div>
+
+      <div class="warning-card">
+        <h4>🧍 Physical signs</h4>
+        <ul>
+          <li>Noticeable weight loss or fluctuation</li>
+          <li>Feeling cold all the time, even in warm weather</li>
+          <li>Dizziness, fainting, or low energy</li>
+          <li>Hair thinning or loss</li>
+          <li>Swollen cheeks or jaw pain</li>
+          <li>Calluses on knuckles (from purging)</li>
+        </ul>
+      </div>
+
+      <div class="warning-card">
+        <h4>💭 Behavioural &amp; emotional</h4>
+        <ul>
+          <li>Intense fear of gaining weight</li>
+          <li>Distorted body image ("I'm so fat" when clearly not)</li>
+          <li>Withdrawing from friends and activities they used to love</li>
+          <li>Excessive exercise even when injured or exhausted</li>
+          <li>Extreme mood swings, especially around mealtimes</li>
+          <li>Wearing loose clothing to hide body shape</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div style="background:#FDF0EC;border-radius:16px;padding:24px 28px;margin-top:28px;border-left:4px solid #E8836A;">
+      <p style="font-size:14px;color:#5A5750;line-height:1.7;margin:0;"><strong style="color:#2D2D2A;">Remember:</strong> You don't need to see every sign to be concerned. Trust your instincts as a parent. If something feels wrong, it's worth talking to a doctor — even if you're not sure. Acting early is never the wrong choice.</p>
+    </div>
+  </div>
+</div>
+
+<!-- HOW TO TALK -->
+<div class="section" id="how-to-talk">
+  <div class="section-inner">
+    <div class="section-label">Starting the conversation</div>
+    <h2 class="section-title">How to talk to your child</h2>
+    <p class="section-sub">The way you start the conversation matters enormously. These steps help you open a door — not start a fight.</p>
+
+    <div class="talk-steps">
+
+      <div class="talk-step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h4>Choose the right moment</h4>
+          <p>Don't bring it up during or right after a meal — emotions are already heightened. Find a calm, private moment when you're both relaxed, like during a walk or a car ride where there's no eye contact pressure.</p>
+        </div>
+      </div>
+
+      <div class="talk-step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h4>Lead with love and observations, not accusations</h4>
+          <p>Focus on specific behaviours you've noticed and how they make you feel — not on food, weight, or their body. This keeps them from becoming defensive.</p>
+          <div class="example">"I've noticed you seem really stressed lately and you haven't been eating with us much. I'm not angry — I'm just worried because I love you and I want to make sure you're okay."</div>
+        </div>
+      </div>
+
+      <div class="talk-step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h4>Listen more than you speak</h4>
+          <p>Your child may deny everything, get angry, or cry. That's okay. Your goal in this first conversation isn't to solve anything — it's just to let them know you see them and you're not going anywhere.</p>
+          <div class="example">"You don't have to tell me everything right now. I just want you to know I'm here and we'll figure this out together, whatever it is."</div>
+        </div>
+      </div>
+
+      <div class="talk-step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h4>Avoid these phrases</h4>
+          <p>Even with the best intentions, some things can make your child shut down or feel worse.</p>
+          <div class="example" style="background:#FDF0EC;color:#993C1D;border-left:3px solid #E8836A;border-radius:0 8px 8px 0;">
+            ✗ "You look fine to me — you're not that thin."<br/>
+            ✗ "Just eat something, it's not that hard."<br/>
+            ✗ "Why are you doing this to our family?"<br/>
+            ✗ "I didn't raise you to be like this."
+          </div>
+        </div>
+      </div>
+
+      <div class="talk-step">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <h4>Seek professional help together</h4>
+          <p>After the conversation, make an appointment with your child's doctor or a specialist — and frame it as something you're doing together, not something being done to them.</p>
+          <div class="example">"I'd like us to go talk to someone who understands this better than I do. Not to get you in trouble — just so we can get you the right support."</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- COMMUNITY -->
+<div class="section" style="background:#fff;" id="community">
+  <div class="section-inner">
+    <div class="section-label">You are not alone</div>
+    <h2 class="section-title">Parent community &amp; forum</h2>
+    <p class="section-sub">Connect with other parents who truly understand what you're going through — day or night.</p>
+
+    <div class="community-box">
+      <div class="community-text">
+        <h3>A safe space just for parents</h3>
+        <p>Our moderated parent forum is a place to ask questions, share what's working, vent without judgment, and find comfort from people who have walked this road before you.</p>
+        <p>You don't have to have answers. You just have to show up.</p>
+        <a href="#" class="btn-primary" style="margin-top:8px;display:inline-block;">Join the community</a>
+      </div>
+
+      <div class="community-features">
+        <div class="community-feature">
+          <div class="feature-icon blue">💬</div>
+          <div class="feature-text">
+            <h5>Open discussion forum</h5>
+            <p>Post questions, share experiences, and get support from other parents at any hour.</p>
+          </div>
+        </div>
+        <div class="community-feature">
+          <div class="feature-icon green">🔒</div>
+          <div class="feature-text">
+            <h5>Private &amp; moderated</h5>
+            <p>All posts are reviewed to keep the space safe, supportive, and free from harmful content.</p>
+          </div>
+        </div>
+        <div class="community-feature">
+          <div class="feature-icon peach">🤝</div>
+          <div class="feature-text">
+            <h5>Peer mentors</h5>
+            <p>Parents further along in the journey volunteer to offer one-on-one guidance.</p>
+          </div>
+        </div>
+        <div class="community-feature">
+          <div class="feature-icon blue">📅</div>
+          <div class="feature-text">
+            <h5>Weekly online meetups</h5>
+            <p>Optional video sessions where parents come together to share and support.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Forum preview -->
+    <div class="forum-preview">
+      <div class="forum-header">
+        <span style="font-size:18px;">💬</span>
+        <span class="forum-title">Recent conversations</span>
+        <span class="forum-badge">Live</span>
+      </div>
+
+      <div class="forum-post">
+        <div class="forum-avatar" style="background:#6A9BB8;">S</div>
+        <div class="forum-post-content">
+          <div class="forum-post-name">Sarah M.</div>
+          <div class="forum-post-text">"My daughter finally agreed to see a therapist after 6 months of refusing. Don't give up — it can happen. 💙"</div>
+          <div class="forum-post-time">2 hours ago · 14 replies</div>
+        </div>
+      </div>
+
+      <div class="forum-post">
+        <div class="forum-avatar" style="background:#5C7A5F;">J</div>
+        <div class="forum-post-content">
+          <div class="forum-post-name">James T.</div>
+          <div class="forum-post-text">"Does anyone have advice for mealtimes that don't turn into battles? We're really struggling with dinner as a family."</div>
+          <div class="forum-post-time">5 hours ago · 8 replies</div>
+        </div>
+      </div>
+
+      <div class="forum-post">
+        <div class="forum-avatar" style="background:#E8836A;">L</div>
+        <div class="forum-post-content">
+          <div class="forum-post-name">Linda K.</div>
+          <div class="forum-post-text">"We're 18 months into recovery and my son ate pizza with us for the first time last night. I cried happy tears. There is hope."</div>
+          <div class="forum-post-time">Yesterday · 22 replies</div>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-top:16px;">
+        <a href="#" style="font-size:13px;color:#6A9BB8;font-weight:500;">View all conversations →</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- NAVIGATING CARE -->
+<div class="section" id="navigate-care">
+  <div class="section-inner">
+    <div class="section-label">Practical guidance</div>
+    <h2 class="section-title">Navigating the healthcare system</h2>
+    <p class="section-sub">Getting the right help can feel overwhelming. Here's a clear map of what to expect and how to advocate for your child.</p>
+
+    <div class="care-grid">
+      <div class="care-card">
+        <div class="care-icon">👨‍⚕️</div>
+        <h4>Start with your pediatrician</h4>
+        <p>Your child's regular doctor is usually the first step. They can assess physical health, rule out other conditions, and refer you to specialists.</p>
+      </div>
+      <div class="care-card">
+        <div class="care-icon">🧠</div>
+        <h4>Find an ED specialist</h4>
+        <p>Look for therapists, psychologists, or psychiatrists who specialise specifically in eating disorders — not just general mental health.</p>
+      </div>
+      <div class="care-card">
+        <div class="care-icon">🥗</div>
+        <h4>Registered dietitian</h4>
+        <p>An ED-specialised dietitian works alongside therapists to help rebuild a healthy relationship with food — without diet culture thinking.</p>
+      </div>
+      <div class="care-card">
+        <div class="care-icon">🏥</div>
+        <h4>Levels of care</h4>
+        <p>Treatment ranges from weekly outpatient therapy to intensive day programs to inpatient care. Your team will recommend the right level.</p>
+      </div>
+      <div class="care-card">
+        <div class="care-icon">📋</div>
+        <h4>Insurance &amp; costs</h4>
+        <p>Eating disorder treatment is often covered under mental health parity laws. Ask your insurer specifically about ED treatment benefits.</p>
+      </div>
+      <div class="care-card">
+        <div class="care-icon">📍</div>
+        <h4>Find providers near you</h4>
+        <p>Use our provider directory to search for ED-specialised therapists and dietitians in your area, filtered by insurance and age group.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SELF CARE FOR PARENTS -->
+<div class="selfcare">
+  <h2>Take care of yourself too.</h2>
+  <p>You cannot pour from an empty cup. Supporting a child with an eating disorder is emotionally exhausting — your wellbeing matters and directly affects your ability to help.</p>
+  <div class="selfcare-cards">
+    <div class="selfcare-card">
+      <h5>🧘 Set aside guilt</h5>
+      <p>You did not cause this. Eating disorders are complex conditions — not the result of bad parenting.</p>
+    </div>
+    <div class="selfcare-card">
+      <h5>💬 Talk to someone</h5>
+      <p>Find your own therapist or support group. Caregiver burnout is real and deserves attention.</p>
+    </div>
+    <div class="selfcare-card">
+      <h5>🌙 Protect your basics</h5>
+      <p>Sleep, movement, and connection with people who support you are not luxuries — they're necessities.</p>
+    </div>
+    <div class="selfcare-card">
+      <h5>🤝 Accept help</h5>
+      <p>Let others in your life help with meals, errands, or childcare. You don't have to carry this alone.</p>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta">
+  <div class="cta-inner">
+    <h2>Ready to take the next step?</h2>
+    <p>Whether you need to talk to someone right now, find a specialist, or just connect with another parent — we're here to help you move forward.</p>
+    <div class="cta-buttons">
+      <a href="tel:18666621235" style="background:#E8836A;color:#fff;padding:14px 32px;border-radius:40px;font-weight:500;font-size:15px;display:inline-block;">📞 Call the Helpline</a>
+      <a href="gethelp.html" style="background:transparent;color:#6A9BB8;padding:13px 30px;border-radius:40px;border:2px solid #9EC4DA;font-weight:500;font-size:15px;display:inline-block;">Find a provider</a>
+      <a href="#community" style="background:#6A9BB8;color:#fff;padding:14px 32px;border-radius:40px;font-weight:500;font-size:15px;display:inline-block;">Join the community</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-top">
+    <div style="flex:2;min-width:200px;">
+      <span class="footer-brand">🌿 Nourish &amp; Hope</span>
+      <p class="footer-desc">A compassionate resource for families navigating eating disorders in children and teens.</p>
+    </div>
+    <div class="footer-col" style="flex:1;min-width:130px;">
+      <h5>For Families</h5>
+      <div class="footer-col-links">
+        <a href="kids.html">For Kids &amp; Teens</a>
+        <a href="parents.html">For Parents</a>
+        <a href="#">Recovery Stories</a>
+        <a href="#community">Parent Forum</a>
+      </div>
+    </div>
+    <div class="footer-col" style="flex:1;min-width:130px;">
+      <h5>Resources</h5>
+      <div class="footer-col-links">
+        <a href="understand.html">Understanding EDs</a>
+        <a href="#warning-signs">Warning Signs</a>
+        <a href="gethelp.html">Find a Provider</a>
+        <a href="gethelp.html">Crisis Support</a>
+      </div>
+    </div>
+    <div class="footer-col" style="flex:1;min-width:130px;">
+      <h5>About</h5>
+      <div class="footer-col-links">
+        <a href="#">About Us</a>
+        <a href="#">Our Reviewers</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Contact Us</a>
+      </div>
+    </div>
+  </div>
+  <p class="footer-disclaimer">This website is for informational and community support purposes only. It is not a substitute for professional medical advice, diagnosis, or treatment. If you are experiencing a mental health emergency, please call 911 or go to your nearest emergency room. Eating disorder helpline: 1-866-662-1235 (National Alliance for Eating Disorders, Mon–Fri 9am–9pm ET).</p>
+</div>
+
+</body>
+</html>
