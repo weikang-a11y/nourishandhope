@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>For Kids & Teens — Nourish & Hope</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', Arial, sans-serif; background: #FAF7F2; color: #2D2D2A; line-height: 1.7; }
+  a { text-decoration: none; }
+  /* Nav */
+  .nav { background: #fff; border-bottom: 1px solid #EDE8DF; padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 64px; position: sticky; top: 0; z-index: 99; }
+  .nav-logo { font-family: 'Lora', Georgia, serif; font-size: 20px; color: #5C7A5F; display: flex; align-items: center; gap: 8px; }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a { color: #5A5750; font-size: 14px; transition: color 0.2s; }
+  .nav-links a:hover { color: #5C7A5F; }
+  .nav-links a.active { color: #E8836A; font-weight: 500; }
+  .nav-cta { background: #5C7A5F; color: #fff !important; padding: 8px 20px; border-radius: 40px; font-weight: 500 !important; }
+  /* Crisis */
+  .crisis { background: #E8836A; color: #fff; text-align: center; padding: 10px 20px; font-size: 14px; }
+  .crisis a { color: #fff; font-weight: 700; text-decoration: underline; }
+  /* Hero */
+  .hero { background: #FDF0EC; padding: 72px 40px 64px; text-align: center; position: relative; overflow: hidden; }
+  .hero-shapes { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+  .hero-tag { display: inline-block; background: #F4B5A2; color: #993C1D; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 16px; border-radius: 40px; margin-bottom: 20px; position: relative; }
+  .hero h1 { font-family: 'Lora', Georgia, serif; font-size: clamp(32px, 4vw, 54px); font-weight: 600; color: #2D2D2A; margin-bottom: 20px; line-height: 1.2; position: relative; }
+  .hero h1 em { color: #E8836A; font-style: italic; }
+  .hero p { font-size: 18px; color: #5A5750; max-width: 560px; margin: 0 auto 36px; line-height: 1.8; font-weight: 300; position: relative; }
+  .hero-buttons { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; position: relative; }
+  .btn-peach { background: #E8836A; color: #fff; padding: 14px 32px; border-radius: 40px; font-weight: 500; font-size: 15px; display: inline-block; transition: background 0.2s; }
+  .btn-peach:hover { background: #D06A52; }
+  .btn-outline { background: transparent; color: #E8836A; padding: 13px 30px; border-radius: 40px; border: 2px solid #F4B5A2; font-weight: 500; font-size: 15px; display: inline-block; transition: background 0.2s; }
+  .btn-outline:hover { background: #FDF0EC; }
+  /* Reassurance */
+  .reassure { background: #fff; padding: 72px 40px; }
+  .reassure-inner { max-width: 860px; margin: 0 auto; }
+  .reassure h2 { font-family: 'Lora', Georgia, serif; font-size: clamp(26px, 3vw, 38px); font-weight: 600; color: #2D2D2A; margin-bottom: 32px; text-align: center; }
+  .reassure-cards { display: flex; flex-wrap: wrap; gap: 20px; }
+  .reassure-card { flex: 1; min-width: 220px; border-radius: 20px; padding: 32px 28px; }
+  .reassure-card .emoji { font-size: 32px; margin-bottom: 14px; display: block; }
+  .reassure-card h4 { font-size: 16px; font-weight: 500; color: #2D2D2A; margin-bottom: 10px; }
+  .reassure-card p { font-size: 14px; color: #5A5750; line-height: 1.7; }
+  /* What is happening */
+  .explainer { background: #FAF7F2; padding: 72px 40px; }
+  .explainer-inner { max-width: 860px; margin: 0 auto; }
+  .section-label { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #8C897F; margin-bottom: 10px; }
+  .section-title { font-family: 'Lora', Georgia, serif; font-size: clamp(26px, 3vw, 38px); font-weight: 600; color: #2D2D2A; margin-bottom: 14px; line-height: 1.3; }
+  .section-sub { font-size: 16px; color: #5A5750; max-width: 580px; font-weight: 300; margin-bottom: 40px; line-height: 1.8; }
+  .explainer-tabs { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 28px; }
+  .tab { padding: 8px 20px; border-radius: 40px; font-size: 13px; font-weight: 500; cursor: pointer; border: 2px solid #EDE8DF; color: #5A5750; background: #fff; transition: all 0.2s; }
+  .tab.active { background: #E8836A; color: #fff; border-color: #E8836A; }
+  .tab-content { display: none; background: #fff; border-radius: 20px; padding: 36px; border: 1px solid #EDE8DF; }
+  .tab-content.active { display: block; }
+  .tab-content h4 { font-family: 'Lora', Georgia, serif; font-size: 22px; font-weight: 600; color: #2D2D2A; margin-bottom: 12px; }
+  .tab-content p { font-size: 15px; color: #5A5750; line-height: 1.8; margin-bottom: 14px; }
+  .tab-content .note { background: #FDF0EC; border-radius: 10px; padding: 14px 18px; font-size: 14px; color: #993C1D; line-height: 1.6; margin-top: 16px; }
+  /* FAQ */
+  .faq { background: #fff; padding: 72px 40px; }
+  .faq-inner { max-width: 720px; margin: 0 auto; }
+  .faq-item { border-bottom: 1px solid #EDE8DF; padding: 20px 0; cursor: pointer; }
+  .faq-item:last-child { border-bottom: none; }
+  .faq-question { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+  .faq-question h4 { font-size: 16px; font-weight: 500; color: #2D2D2A; line-height: 1.4; }
+  .faq-toggle { width: 28px; height: 28px; background: #FDF0EC; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; color: #E8836A; flex-shrink: 0; transition: transform 0.2s; }
+  .faq-answer { display: none; font-size: 15px; color: #5A5750; line-height: 1.8; padding-top: 14px; }
+  .faq-item.open .faq-answer { display: block; }
+  .faq-item.open .faq-toggle { transform: rotate(45deg); background: #E8836A; color: #fff; }
+  /* Stories */
+  .stories { background: #FAF7F2; padding: 72px 40px; }
+  .stories-inner { max-width: 900px; margin: 0 auto; }
+  .stories-grid { display: flex; flex-wrap: wrap; gap: 24px; margin-top: 40px; }
+  .story-card { flex: 1; min-width: 260px; background: #fff; border-radius: 20px; padding: 32px; border: 1px solid #EDE8DF; position: relative; }
+  .story-quote { font-family: 'Lora', Georgia, serif; font-size: 60px; color: #F4B5A2; line-height: 0.8; margin-bottom: 12px; }
+  .story-text { font-size: 15px; color: #5A5750; line-height: 1.8; font-style: italic; margin-bottom: 20px; }
+  .story-author { display: flex; align-items: center; gap: 12px; }
+  .story-avatar { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 500; color: #fff; }
+  .story-name { font-size: 13px; font-weight: 500; color: #2D2D2A; }
+  .story-detail { font-size: 12px; color: #8C897F; }
+  /* Ask anonymously */
+  .ask { background: #E8836A; padding: 72px 40px; text-align: center; }
+  .ask h2 { font-family: 'Lora', Georgia, serif; font-size: clamp(24px, 3vw, 36px); font-weight: 600; color: #fff; margin-bottom: 14px; }
+  .ask p { font-size: 16px; color: rgba(255,255,255,0.88); max-width: 520px; margin: 0 auto 36px; line-height: 1.8; font-weight: 300; }
+  .ask-box { background: #fff; border-radius: 20px; padding: 36px; max-width: 600px; margin: 0 auto; text-align: left; }
+  .ask-box label { font-size: 13px; font-weight: 500; color: #5A5750; display: block; margin-bottom: 8px; }
+  .ask-box textarea { width: 100%; border: 1.5px solid #EDE8DF; border-radius: 12px; padding: 14px 16px; font-size: 14px; font-family: 'DM Sans', Arial, sans-serif; color: #2D2D2A; resize: vertical; min-height: 100px; outline: none; transition: border-color 0.2s; }
+  .ask-box textarea:focus { border-color: #E8836A; }
+  .ask-box .privacy-note { font-size: 12px; color: #8C897F; margin: 10px 0 20px; line-height: 1.5; }
+  .ask-box button { background: #E8836A; color: #fff; border: none; padding: 12px 28px; border-radius: 40px; font-size: 14px; font-weight: 500; cursor: pointer; font-family: 'DM Sans', Arial, sans-serif; transition: background 0.2s; }
+  .ask-box button:hover { background: #D06A52; }
+  /* Help right now */
+  .helpnow { background: #fff; padding: 72px 40px; }
+  .helpnow-inner { max-width: 860px; margin: 0 auto; }
+  .helpnow-grid { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 40px; }
+  .helpnow-card { flex: 1; min-width: 220px; border-radius: 20px; padding: 32px; text-align: center; border: 1px solid #EDE8DF; }
+  .helpnow-card .icon { font-size: 36px; margin-bottom: 14px; }
+  .helpnow-card h4 { font-size: 16px; font-weight: 500; color: #2D2D2A; margin-bottom: 10px; }
+  .helpnow-card p { font-size: 13px; color: #5A5750; line-height: 1.6; margin-bottom: 20px; }
+  .helpnow-card a { display: inline-block; padding: 10px 22px; border-radius: 40px; font-size: 13px; font-weight: 500; }
+  /* Footer */
+  .footer { background: #2D2D2A; padding: 48px 40px 32px; }
+  .footer-top { display: flex; flex-wrap: wrap; gap: 40px; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 24px; }
+  .footer-brand { font-family: 'Lora', Georgia, serif; font-size: 20px; color: #fff; margin-bottom: 10px; display: block; }
+  .footer-desc { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; max-width: 220px; }
+  .footer-col h5 { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 14px; }
+  .footer-col-links { display: flex; flex-direction: column; gap: 10px; }
+  .footer-col-links a { font-size: 13px; color: rgba(255,255,255,0.55); }
+  .footer-disclaimer { font-size: 11px; color: rgba(255,255,255,0.3); line-height: 1.6; }
+  @media (max-width: 700px) {
+    .nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hero, .reassure, .explainer, .faq, .stories, .ask, .helpnow { padding: 48px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- CRISIS BANNER -->
+<div class="crisis">
+  Need to talk to someone right now? Call <a href="tel:18666621235">1-866-662-1235</a> — the Eating Disorder Helpline. You don't have to face this alone.
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="index.html" class="nav-logo">🌿 Nourish &amp; Hope</a>
+  <ul class="nav-links">
+    <li><a href="kids.html" class="active">For Kids &amp; Teens</a></li>
+    <li><a href="parents.html">For Parents</a></li>
+    <li><a href="understand.html">Understanding EDs</a></li>
+    <li><a href="gethelp.html" class="nav-cta">Get Help</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <span class="hero-tag">For kids &amp; teens</span>
+  <h1>What you're feeling<br/>is <em>real.</em></h1>
+  <p>You're not making it up. You're not being dramatic. And you are absolutely not alone. This is a place just for you — no judgment, no pressure, just honesty and support.</p>
+  <div class="hero-buttons">
+    <a href="#faq" class="btn-peach">I have questions</a>
+    <a href="#stories" class="btn-outline">Read others' stories</a>
+  </div>
+</div>
+
+<!-- REASSURANCE -->
+<div class="reassure">
+  <div class="reassure-inner">
+    <h2>A few things we want you to know</h2>
+    <div class="reassure-cards">
+
+      <div class="reassure-card" style="background:#FDF0EC;">
+        <span class="emoji">💙</span>
+        <h4>You are not broken</h4>
+        <p>Having an eating disorder doesn't mean something is fundamentally wrong with you. It means you're struggling with something really hard — and struggling is human.</p>
+      </div>
+
+      <div class="reassure-card" style="background:#EBF2EC;">
+        <span class="emoji">🌱</span>
+        <h4>Things can get better</h4>
+        <p>Recovery is real. It's not always fast or straight — but thousands of young people who felt exactly like you do right now have gone on to live full, free lives.</p>
+      </div>
+
+      <div class="reassure-card" style="background:#EAF3F9;">
+        <span class="emoji">🔒</span>
+        <h4>This space is safe</h4>
+        <p>You can read, ask questions, and explore here without anyone judging you. You don't have to share your name. You don't have to have it all figured out.</p>
+      </div>
+
+      <div class="reassure-card" style="background:#FAF0F8;">
+        <span class="emoji">🤝</span>
+        <h4>Asking for help is brave</h4>
+        <p>It takes real courage to admit something is wrong and to reach out. That courage is already inside you — you're here, aren't you?</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- WHAT IS HAPPENING -->
+<div class="explainer" id="understand">
+  <div class="explainer-inner">
+    <div class="section-label">Understanding what's going on</div>
+    <h2 class="section-title">What is an eating disorder?</h2>
+    <p class="section-sub">Eating disorders aren't really about food. They're about feelings — pain, fear, control, or numbness — that end up getting tied to eating. Here's what different ones can feel like.</p>
+
+    <div class="explainer-tabs">
+      <div class="tab active" onclick="showTab('anorexia')">Anorexia</div>
+      <div class="tab" onclick="showTab('bulimia')">Bulimia</div>
+      <div class="tab" onclick="showTab('binge')">Binge eating</div>
+      <div class="tab" onclick="showTab('arfid')">ARFID</div>
+      <div class="tab" onclick="showTab('other')">Other EDs</div>
+    </div>
+
+    <div id="anorexia" class="tab-content active">
+      <h4>Anorexia nervosa</h4>
+      <p>Anorexia involves eating very little — not because you're not hungry, but because eating feels scary or wrong. It often comes with an intense fear of gaining weight and a distorted view of your own body (seeing yourself as bigger than you are).</p>
+      <p>It's not vanity or a diet gone too far. It's a serious condition where the brain becomes trapped in a cycle of restriction, fear, and distorted thinking — and it needs real support to break out of.</p>
+      <div class="note">💛 You might have anorexia if you find yourself skipping meals most days, counting every calorie, feeling terrified of certain foods, or feeling like you can never be thin enough no matter what the mirror or scale says.</div>
+    </div>
+
+    <div id="bulimia" class="tab-content">
+      <h4>Bulimia nervosa</h4>
+      <p>Bulimia involves cycles of eating large amounts of food (bingeing) followed by trying to "undo" it — by vomiting, using laxatives, or exercising excessively. It's usually driven by shame, stress, or feeling out of control.</p>
+      <p>Many people with bulimia look completely "normal" from the outside, which makes it feel invisible and isolating. But what's happening inside — the shame spiral, the secrecy — is exhausting and painful.</p>
+      <div class="note">💛 You might relate to bulimia if you feel like you "lose control" around food sometimes, and then feel intense guilt or panic afterward and try to compensate.</div>
+    </div>
+
+    <div id="binge" class="tab-content">
+      <h4>Binge eating disorder</h4>
+      <p>Binge eating disorder means eating large amounts of food in a short time, often feeling like you can't stop, even when you're not hungry. Unlike bulimia, it doesn't involve purging — but it comes with enormous shame and distress.</p>
+      <p>Binge eating is often a response to difficult emotions — loneliness, anxiety, boredom, or pain. Food becomes a way to cope, even though it leaves you feeling worse.</p>
+      <div class="note">💛 This is one of the most common eating disorders and one of the least talked about. If this sounds familiar, know that it's real, it's recognised, and it's treatable.</div>
+    </div>
+
+    <div id="arfid" class="tab-content">
+      <h4>ARFID (Avoidant/Restrictive Food Intake Disorder)</h4>
+      <p>ARFID involves avoiding many foods — not because of body image worries, but because of things like texture, smell, fear of choking or getting sick, or just having a very limited range of "safe" foods.</p>
+      <p>It's not pickiness. It's a genuine difficulty that can make eating stressful and social situations around food feel impossible.</p>
+      <div class="note">💛 ARFID is more common than people think, especially among kids and teens who may also have sensory sensitivities or anxiety. It's not your fault and it can get better with the right support.</div>
+    </div>
+
+    <div id="other" class="tab-content">
+      <h4>Other eating disorders</h4>
+      <p>There are other eating disorders too — like orthorexia (obsession with "clean" or "healthy" eating), pica (eating non-food items), and rumination disorder. There's also OSFED (Other Specified Feeding or Eating Disorder), which is the most common diagnosis and simply means your symptoms don't fit neatly into one category.</p>
+      <p>Whatever you're experiencing — if your relationship with food feels painful, scary, or out of control — it deserves attention and care, whether or not it has a name.</p>
+      <div class="note">💛 You don't need a diagnosis to deserve help. If eating feels hard and it's affecting your life, that's enough reason to reach out.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="faq" id="faq">
+  <div class="faq-inner">
+    <div class="section-label">Questions you might have</div>
+    <h2 class="section-title">Honest answers to real questions</h2>
+    <p class="section-sub" style="margin-bottom:36px;">These are things lots of young people wonder but might feel too embarrassed to ask out loud.</p>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-question">
+        <h4>Is this actually an eating disorder, or am I just being dramatic?</h4>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-answer">If your relationship with food is causing you pain, stress, or getting in the way of your life — that's real and it matters. You don't have to be at a certain weight or severity to deserve help. The fact that you're asking this question at all is worth paying attention to.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-question">
+        <h4>Do I have to tell my parents?</h4>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-answer">You don't have to do anything before you're ready. But we'd gently encourage you to think about telling at least one trusted adult — a parent, relative, school counselor, or doctor. Not because you're in trouble, but because getting better is really hard to do alone, and you deserve support. If you're nervous about your parents' reaction, a school counselor can sometimes help you figure out how to have that conversation.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-question">
+        <h4>Will I have to gain weight / be forced to eat things I hate?</h4>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-answer">Good treatment isn't about forcing you to do things. It's about working with a team you trust to help your body and mind feel safe again — at a pace that works for you. A good therapist and dietitian will listen to your fears and work with you, not against you.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-question">
+        <h4>What if I don't want to recover?</h4>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-answer">That feeling is more common than you'd think — and it makes sense. An eating disorder can feel like it's helping you cope, giving you control, or even protecting you somehow. It's okay to feel ambivalent about getting better. You don't have to want recovery fully to start talking to someone. You just have to be a little curious about what life could be like.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-question">
+        <h4>Can I recover completely, or will I always struggle with this?</h4>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-answer">Full recovery is absolutely possible — and it happens for many people. Recovery looks different for everyone, and it's rarely a straight line. But people go on to eat freely, feel at peace with their bodies, and not think about food all day. That future is available to you.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-question">
+        <h4>My friend might have an eating disorder. What should I do?</h4>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-answer">The most important thing you can do is be honest and gentle. Tell them you've noticed something, that you care about them, and that you're not going anywhere. Don't make it about food or weight — make it about them. If you're worried they're in danger, tell a trusted adult. It might feel like a betrayal, but it could save their life.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- RECOVERY STORIES -->
+<div class="stories" id="stories">
+  <div class="stories-inner">
+    <div class="section-label">From people who've been there</div>
+    <h2 class="section-title">You're not the first. You won't be the last.</h2>
+    <p class="section-sub">These are real stories from young people who've been through eating disorders and come out the other side.</p>
+
+    <div class="stories-grid">
+
+      <div class="story-card">
+        <div class="story-quote">"</div>
+        <p class="story-text">I spent two years thinking I was fine. Everyone kept saying I looked healthy. But inside I was exhausted and scared all the time. Getting help was the hardest and best thing I ever did.</p>
+        <div class="story-author">
+          <div class="story-avatar" style="background:#E8836A;">M</div>
+          <div>
+            <div class="story-name">Maya, 17</div>
+            <div class="story-detail">Recovery: 14 months</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="story-card">
+        <div class="story-quote">"</div>
+        <p class="story-text">I'm a guy and I felt like eating disorders weren't supposed to happen to me. I hid it for so long. Please don't do what I did — it's okay to ask for help no matter who you are.</p>
+        <div class="story-author">
+          <div class="story-avatar" style="background:#6A9BB8;">T</div>
+          <div>
+            <div class="story-name">Tyler, 19</div>
+            <div class="story-detail">Recovery: 2 years</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="story-card">
+        <div class="story-quote">"</div>
+        <p class="story-text">The thing nobody told me was that recovery isn't about being perfect with food. It's about getting your life back. I play soccer again. I laugh again. That's what recovery gave me.</p>
+        <div class="story-author">
+          <div class="story-avatar" style="background:#5C7A5F;">A</div>
+          <div>
+            <div class="story-name">Aisha, 16</div>
+            <div class="story-detail">Recovery: 8 months</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ASK ANONYMOUSLY -->
+<div class="ask" id="ask">
+  <h2>Have a question you're afraid to ask?</h2>
+  <p>Ask it here, anonymously. No name needed. Our team reads every message and will respond with honesty and care.</p>
+  <div class="ask-box">
+    <label for="question">Your question</label>
+    <textarea id="question" placeholder="You can ask anything here. Nobody will know it was you..."></textarea>
+    <p class="privacy-note">🔒 This is completely anonymous. We don't collect your name, email, or any identifying information.</p>
+    <button type="button">Send my question</button>
+  </div>
+</div>
+
+<!-- HELP RIGHT NOW -->
+<div class="helpnow" id="help">
+  <div class="helpnow-inner">
+    <div class="section-label">Need support now?</div>
+    <h2 class="section-title">You don't have to wait</h2>
+    <p class="section-sub">If things feel urgent, or you just want to talk to someone today — here are your options.</p>
+
+    <div class="helpnow-grid">
+
+      <div class="helpnow-card" style="background:#FDF0EC;border-color:#F4B5A2;">
+        <div class="icon">📞</div>
+        <h4>Call the helpline</h4>
+        <p>Talk to a real person who understands eating disorders. Confidential, free, no judgment.</p>
+        <a href="tel:18666621235" style="background:#E8836A;color:#fff;">Call 1-866-662-1235</a>
+      </div>
+
+      <div class="helpnow-card" style="background:#EBF2EC;border-color:#A8C4AA;">
+        <div class="icon">💬</div>
+        <h4>Crisis text line</h4>
+        <p>If calling feels too hard, you can text HOME to 741741 to reach a crisis counselor by text.</p>
+        <a href="sms:741741" style="background:#5C7A5F;color:#fff;">Text HOME to 741741</a>
+      </div>
+
+      <div class="helpnow-card" style="background:#EAF3F9;border-color:#9EC4DA;">
+        <div class="icon">🧑‍⚕️</div>
+        <h4>Talk to a school counselor</h4>
+        <p>Your school counselor is there for exactly this. You don't need to have all the words — just show up.</p>
+        <a href="#ask" style="background:#6A9BB8;color:#fff;">Ask anonymously first</a>
+      </div>
+
+      <div class="helpnow-card" style="background:#FAF0F8;border-color:#DDB8D8;">
+        <div class="icon">🌿</div>
+        <h4>Find a therapist</h4>
+        <p>Ready to take the next step? Our provider directory can help you find an ED specialist near you.</p>
+        <a href="gethelp.html" style="background:#9B6AB0;color:#fff;">Find a provider</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-top">
+    <div style="flex:2;min-width:200px;">
+      <span class="footer-brand">🌿 Nourish &amp; Hope</span>
+      <p class="footer-desc">A compassionate resource for families navigating eating disorders in children and teens.</p>
+    </div>
+    <div class="footer-col" style="flex:1;min-width:130px;">
+      <h5>For Families</h5>
+      <div class="footer-col-links">
+        <a href="kids.html">For Kids &amp; Teens</a>
+        <a href="parents.html">For Parents</a>
+        <a href="#stories">Recovery Stories</a>
+        <a href="parents.html#community">Parent Forum</a>
+      </div>
+    </div>
+    <div class="footer-col" style="flex:1;min-width:130px;">
+      <h5>Resources</h5>
+      <div class="footer-col-links">
+        <a href="understand.html">Understanding EDs</a>
+        <a href="parents.html#warning-signs">Warning Signs</a>
+        <a href="gethelp.html">Find a Provider</a>
+        <a href="gethelp.html">Crisis Support</a>
+      </div>
+    </div>
+    <div class="footer-col" style="flex:1;min-width:130px;">
+      <h5>About</h5>
+      <div class="footer-col-links">
+        <a href="#">About Us</a>
+        <a href="#">Our Reviewers</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Contact Us</a>
+      </div>
+    </div>
+  </div>
+  <p class="footer-disclaimer">This website is for informational and community support purposes only. It is not a substitute for professional medical advice, diagnosis, or treatment. If you are in crisis, please call 911 or go to your nearest emergency room. Eating disorder helpline: 1-866-662-1235 (Mon–Fri 9am–9pm ET). Crisis text line: Text HOME to 741741.</p>
+</div>
+
+<script>
+  function showTab(id) {
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    event.target.classList.add('active');
+  }
+  function toggleFaq(el) {
+    el.classList.toggle('open');
+  }
+</script>
+
+</body>
+</html>
