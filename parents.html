@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta name="theme-color" content="#5C7A5F"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-title" content="Nourish &amp; Hope"/>
+<link rel="manifest" href="manifest.json"/>
+<link rel="apple-touch-icon" href="icon-192.png"/>
+<script>
+if('serviceWorker' in navigator){
+  window.addEventListener('load',()=>{ navigator.serviceWorker.register('sw.js'); });
+}
+</script>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>For Parents — Nourish & Hope</title>
@@ -123,16 +133,28 @@
   &nbsp;·&nbsp; Mon–Fri, 9am–9pm ET
 </div>
 
-<!-- NAV -->
-<nav class="nav">
-  <a href="index.html" class="nav-logo">🌿 Nourish &amp; Hope</a>
-  <ul class="nav-links">
-    <li><a href="kids.html">For Kids &amp; Teens</a></li>
-    <li><a href="parents.html" class="active">For Parents</a></li>
-    <li><a href="understand.html">Understanding EDs</a></li>
-    <li><a href="gethelp.html" class="nav-cta">Get Help</a></li>
+<!-- NAV WITH HAMBURGER -->
+<div style="background:#fff;border-bottom:1px solid #EDE8DF;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:999;">
+  <a href="index.html" style="font-family:'Lora',Georgia,serif;font-size:20px;color:#5C7A5F;text-decoration:none;display:flex;align-items:center;gap:8px;">&#127807; Nourish &amp; Hope</a>
+  <ul style="display:flex;gap:28px;list-style:none;margin:0;padding:0;" class="nh-dnav">
+    <li><a href="kids.html" style="color:#5A5750;font-size:14px;text-decoration:none;font-family:Arial,sans-serif;">For Kids &amp; Teens</a></li>
+    <li><a href="parents.html" style="color:#5A5750;font-size:14px;text-decoration:none;font-family:Arial,sans-serif;">For Parents</a></li>
+    <li><a href="understand.html" style="color:#5A5750;font-size:14px;text-decoration:none;font-family:Arial,sans-serif;">Understanding EDs</a></li>
+    <li><a href="gethelp.html" style="background:#5C7A5F;color:#fff;font-size:14px;text-decoration:none;font-family:Arial,sans-serif;padding:8px 20px;border-radius:40px;font-weight:500;">Get Help</a></li>
   </ul>
-</nav>
+  <button onclick="var m=document.getElementById('nh-menu');m.style.display=m.style.display==='flex'?'none':'flex';" style="display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;" class="nh-hbg" aria-label="Open menu">
+    <span style="width:22px;height:2px;background:#5A5750;border-radius:2px;display:block;"></span>
+    <span style="width:22px;height:2px;background:#5A5750;border-radius:2px;display:block;"></span>
+    <span style="width:22px;height:2px;background:#5A5750;border-radius:2px;display:block;"></span>
+  </button>
+</div>
+<div id="nh-menu" style="display:none;flex-direction:column;background:#fff;border-bottom:1px solid #EDE8DF;padding:8px 0;position:sticky;top:64px;z-index:998;box-shadow:0 4px 12px rgba(0,0,0,0.08);">
+  <a href="kids.html" style="padding:14px 24px;color:#2D2D2A;font-size:15px;text-decoration:none;font-family:Arial,sans-serif;border-bottom:1px solid #F5F0E8;">&#127800; For Kids &amp; Teens</a>
+  <a href="parents.html" style="padding:14px 24px;color:#2D2D2A;font-size:15px;text-decoration:none;font-family:Arial,sans-serif;border-bottom:1px solid #F5F0E8;">&#129306; For Parents</a>
+  <a href="understand.html" style="padding:14px 24px;color:#2D2D2A;font-size:15px;text-decoration:none;font-family:Arial,sans-serif;border-bottom:1px solid #F5F0E8;">&#128214; Understanding EDs</a>
+  <a href="gethelp.html" style="padding:14px 24px;color:#fff;font-size:15px;text-decoration:none;font-family:Arial,sans-serif;background:#5C7A5F;margin:8px 16px;border-radius:10px;text-align:center;font-weight:500;display:block;">Get Help Now</a>
+</div>
+<style>@media(max-width:700px){.nh-dnav{display:none!important;}.nh-hbg{display:flex!important;}}</style>
 
 <!-- HERO -->
 <div class="hero">
