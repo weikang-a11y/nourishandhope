@@ -1,9 +1,69 @@
+<meta name="theme-color" content="#5C7A5F"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="default"/>
+<meta name="apple-mobile-web-app-title" content="Nourish &amp; Hope"/>
+<link rel="manifest" href="manifest.json"/>
+<link rel="apple-touch-icon" href="icon-192.png"/>
+<script>
+if('serviceWorker' in navigator){
+  window.addEventListener('load',()=>{
+    navigator.serviceWorker.register('sw.js')
+      .then(()=>console.log('SW registered'))
+      .catch(e=>console.log('SW error',e));
+  });
+}
+</script>
 <!-- CRISIS BANNER -->
 <div style="background:#E8836A;color:#ffffff;text-align:center;padding:12px 20px;font-family:Georgia,serif;font-size:14px;font-weight:500;">
   If you or your child need immediate support, call the Eating Disorder Helpline:
   <a href="tel:18666621235" style="color:#ffffff;font-weight:700;text-decoration:underline;">1-866-662-1235</a>
   &nbsp;·&nbsp; Available Mon–Fri, 9am–9pm ET
 </div>
+
+<!-- NAV WITH HAMBURGER -->
+<div style="background:#fff;border-bottom:1px solid #EDE8DF;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:999;">
+  <a href="index.html" style="font-family:'Lora',Georgia,serif;font-size:20px;color:#5C7A5F;text-decoration:none;display:flex;align-items:center;gap:8px;">&#127807; Nourish &amp; Hope</a>
+  <ul style="display:flex;gap:28px;list-style:none;margin:0;padding:0;" class="nh-dnav">
+    <li><a href="kids.html" style="color:#5A5750;font-size:14px;text-decoration:none;font-family:Arial,sans-serif;">For Kids &amp; Teens</a></li>
+    <li><a href="parents.html" style="color:#5A5750;font-size:14px;text-decoration:none;font-family:Arial,sans-serif;">For Parents</a></li>
+    <li><a href="understand.html" style="color:#5A5750;font-size:14px;text-decoration:none;font-family:Arial,sans-serif;">Understanding EDs</a></li>
+    <li><a href="gethelp.html" style="background:#5C7A5F;color:#fff;font-size:14px;text-decoration:none;font-family:Arial,sans-serif;padding:8px 20px;border-radius:40px;font-weight:500;">Get Help</a></li>
+  </ul>
+  <button onclick="var m=document.getElementById('nh-menu');m.style.display=m.style.display==='flex'?'none':'flex';" style="display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;" class="nh-hbg" aria-label="Open menu">
+    <span style="width:22px;height:2px;background:#5A5750;border-radius:2px;display:block;"></span>
+    <span style="width:22px;height:2px;background:#5A5750;border-radius:2px;display:block;"></span>
+    <span style="width:22px;height:2px;background:#5A5750;border-radius:2px;display:block;"></span>
+  </button>
+</div>
+<div id="nh-menu" style="display:none;flex-direction:column;background:#fff;border-bottom:1px solid #EDE8DF;padding:8px 0;position:sticky;top:64px;z-index:998;box-shadow:0 4px 12px rgba(0,0,0,0.08);">
+  <a href="kids.html" style="padding:14px 24px;color:#2D2D2A;font-size:15px;text-decoration:none;font-family:Arial,sans-serif;border-bottom:1px solid #F5F0E8;">&#127800; For Kids &amp; Teens</a>
+  <a href="parents.html" style="padding:14px 24px;color:#2D2D2A;font-size:15px;text-decoration:none;font-family:Arial,sans-serif;border-bottom:1px solid #F5F0E8;">&#129306; For Parents</a>
+  <a href="understand.html" style="padding:14px 24px;color:#2D2D2A;font-size:15px;text-decoration:none;font-family:Arial,sans-serif;border-bottom:1px solid #F5F0E8;">&#128214; Understanding EDs</a>
+  <a href="gethelp.html" style="padding:14px 24px;color:#fff;font-size:15px;text-decoration:none;font-family:Arial,sans-serif;background:#5C7A5F;margin:8px 16px;border-radius:10px;text-align:center;font-weight:500;display:block;">Get Help Now</a>
+</div>
+<style>@media(max-width:700px){.nh-dnav{display:none!important;}.nh-hbg{display:flex!important;}}</style>
+
+<!-- PWA Install Banner -->
+<div id="pwa-banner" style="display:none;background:#EBF2EC;border-bottom:1px solid #A8C4AA;padding:12px 20px;text-align:center;font-family:Arial,sans-serif;font-size:13px;color:#2D2D2A;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;">
+  <span>&#127807; Add Nourish &amp; Hope to your home screen for easy access</span>
+  <button id="pwa-install" style="background:#5C7A5F;color:#fff;border:none;padding:6px 16px;border-radius:20px;font-size:12px;cursor:pointer;font-family:Arial,sans-serif;">Add to Home Screen</button>
+  <button onclick="document.getElementById('pwa-banner').style.display='none'" style="background:none;border:none;color:#8C897F;font-size:18px;cursor:pointer;line-height:1;">&#215;</button>
+</div>
+<script>
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', e => {
+  e.preventDefault();
+  deferredPrompt = e;
+  document.getElementById('pwa-banner').style.display = 'flex';
+});
+document.getElementById('pwa-install').addEventListener('click', () => {
+  document.getElementById('pwa-banner').style.display = 'none';
+  if(deferredPrompt){ deferredPrompt.prompt(); deferredPrompt = null; }
+});
+window.addEventListener('appinstalled', () => {
+  document.getElementById('pwa-banner').style.display = 'none';
+});
+</script>
 
 <!-- HERO SECTION -->
 <div style="background:#FAF7F2;padding:70px 40px 60px;text-align:center;font-family:Georgia,serif;">
